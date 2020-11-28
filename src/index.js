@@ -1,1 +1,3 @@
-import './sass/styles.scss';
+import initRouter from './services/Router';
+
+initRouter();
