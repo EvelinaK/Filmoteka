@@ -7,10 +7,10 @@ import initLibraryPage from '../pages/LibraryPage';
 
 const rootUrl = `${window.location.protocol}//${window.location.host}`;
 const root = null;
-//const useHash = true;
-//const hash = '#!';
-//const router = new Navigo(root, useHash, hash);
-const router = new Navigo(root);
+const useHash = true;
+const hash = '#!';
+const router = new Navigo(root, useHash, hash);
+// const router = new Navigo(root);
 
 const initRouter = () => {
   router
