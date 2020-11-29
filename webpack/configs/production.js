@@ -23,6 +23,11 @@ module.exports = env => ({
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: paths.SRC_DIR,
+        use: ['babel-loader'],
+      },
+      {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },
