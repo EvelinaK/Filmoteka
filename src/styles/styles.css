@@ -159,6 +159,10 @@
       width: 280px;
       height: 402px;
     }
+    .card__img {
+      width: 280px;
+      height: 402px;
+    }
     .card__item-film:nth-child(1n) {
       margin-right: 0;
     }
@@ -170,7 +174,7 @@
   
   
     /*пагинация */
-  
+   /*пагинация */
   
   a:hover {
     cursor: pointer;
