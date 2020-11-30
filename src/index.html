@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <title>Movies</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
 </head>
-
-
 
 <body>
   <!--названия баннеров banner-home banner-watched banner-detalis -->
@@ -17,7 +17,7 @@
   <header class="page-header banner-home ">
     <div class="site-navigation">
       <div class="site-logo">
-        <img class="site-logo__icon" src="./icons/film.png" alt="">
+        <img class="site-logo__icon" src="./images/icons/film.png" alt="">
         <a href="#" class="site-logo__link">Filmoteka</a>
       </div>
       <ul class="menu-navigation">
@@ -32,17 +32,52 @@
       <!-- изначально display:block,при нажатии кнопки ставим display:none -->
       <div class="menu-search">
         <input class="menu-search__films" type="text" value="Поиск фильмов">
-        <img class="menu-search__icon" src="./icons/search 2.png" alt="">
+        <img class="menu-search__icon" src="./images/icons/search2.png" alt="">
       </div>
 
     </div>
   </header>
-
+  <div id="wrapper">
+    <section class="films__list">
+      <div class="cards__films-wrap">
+        <div id="view"></div>
+      </div>
+      <div id="pagination">
+        <ul>
+          <li class="page-item previous no">
+            <a onclick="createPagination(pages, 12)">
+              <img class="control" src="images/arrow-right.png" alt=""></a></li>
+          <li class="no page-item"><a onclick="createPagination(pages, 1)">1</a></li>
+          <li class="out-of-range"><a onclick="createPagination(pages,11)">...</a></li>
+          <li class="page-item no"><a onclick="createPagination(pages, 12)">12</a></li>
+          <li class="page-item no"><a onclick="createPagination(pages, 12)">13</a></li>
+          <li class="page-item active"><a onclick="createPagination(pages, 14)">14</a></li>
+          <li class="page-item no"><a onclick="createPagination(pages, 14)">15</a></li>
+          <li class="page-item no"><a onclick="createPagination(pages, 14)">15</a></li>
+          <li class="out-of-range"><a onclick="createPagination(pages,15)">...</a></li>
+          <li class="page-item no"><a onclick="createPagination(pages, pages)">25</a></li>
+          <li class="page-item next no"><a onclick="createPagination(pages, 14)">
+              <img class="control" src="./images/arrow-left.png" alt=""></a></li>
+        </ul>
+      </div>
+    </section>
+    <section class="film-footer__section">
+      <div class="contact-form-container contact-form">
+        <span class="contact-form__text forMobile">© 2020 | All Rights Reserved |</span>
+        <div class="links-contact">
+          <span class="contact-form__text forDesktop">Developed with</span>
+          <img class="contact-form__icon" src="./images/heart.svg" alt="" />
+          <span class="contact-form__text">by</span>
+          <a class="contact-form__link" href="#"> GoIT Students</a>
+        </div>
+      </div>
+    </section>
+  </div>
   <main>
-    <div id="view"></div>
+    <!-- <div id="view"></div> -->
   </main>
 
 </body>
-<script src="./index.js" type="module"></script>
+<!-- <script src="./index.js" type="module"></script> -->
 
 </html>
