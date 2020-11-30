@@ -16,8 +16,6 @@ const RenderComponent = async (renderFunction, rootElement = ROOT_ELEMENT) => {
       event.preventDefault();
       navigate(event.target.getAttribute('href'));
     }
-    // /movi
-    // local/hppt://jhfijhfk
   });
 };
 
