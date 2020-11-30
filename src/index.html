@@ -9,10 +9,40 @@
   <title>Movies</title>
 </head>
 
-<body>
-  <div id="view">
 
-  </div>
+
+<body>
+  <!--названия баннеров banner-home banner-watched banner-detalis -->
+  <!-- смена баннеров -->
+  <header class="page-header banner-home ">
+    <div class="site-navigation">
+      <div class="site-logo">
+        <img class="site-logo__icon" src="./icons/film.png" alt="">
+        <a href="#" class="site-logo__link">Filmoteka</a>
+      </div>
+      <ul class="menu-navigation">
+        <li class="menu-navigation__item"><a href="#" class="menu-navigation__home">HOME</a></li>
+        <li class="menu-navigation__item"><a href="#" class="menu-navigation__library">MY LIBRARY</a></li>
+      </ul>
+      <!-- изнчально display:none,при нажатии кнопки ставим display:block -->
+      <div class="menu-library">
+        <button class="menu-library__watched">WATCHED</button>
+        <button class="menu-library__queue">QUEUE</button>
+      </div>
+      <!-- изначально display:block,при нажатии кнопки ставим display:none -->
+      <div class="menu-search">
+        <input class="menu-search__films" type="text" value="Поиск фильмов">
+        <img class="menu-search__icon" src="./icons/search 2.png" alt="">
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <div id="view"></div>
+  </main>
+
 </body>
+<script src="./index.js" type="module"></script>
 
 </html>
