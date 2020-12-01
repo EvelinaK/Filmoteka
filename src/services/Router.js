@@ -17,9 +17,6 @@ const initRouter = () => {
         .then(() => {
           addHomePageEventHandlers();
         })
-        .then(() => {
-          // RenderComponent(initHomePage);
-        })
         .finally(() => {
           console.log('Home page is rendered');
         });
@@ -31,13 +28,6 @@ const initRouter = () => {
       RenderComponent(initMoviePage, params);
     })
     .resolve();
-  // .on(`/library/:id`, (params, query) => {
-  //   //.on(rootUrl + `/library`, () => {
-  //   //${rootUrl}
-  //   console.log(params);
-  //   // RenderComponent(initLibraryPage(params));
-  // })
-  // .resolve();
 };
 
 export const navigate = path => {
