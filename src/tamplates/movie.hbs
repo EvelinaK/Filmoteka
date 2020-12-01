@@ -1,11 +1,9 @@
-<!-- Под вопросом -->
 <div class="details-film">
-    <!-- Под вопросом -->
-    <div class="card-film__img">
-        <img class="card__img" src="https://image.tmdb.org/t/p/w220_and_h330_face//{{poster_path}}" alt="" />
+    <div class="details-film__img">
+        <img src="https://image.tmdb.org/t/p/w220_and_h330_face//{{poster_path}}" alt="" />
     </div>
     <div class="details-film__text">
-        <h4 class="card-film__name">{{title}}</h4>
+        <h4 class="details-film__name">{{title}}</h4>
         <div class="details-film__stat">
             <div class="details-film__stat-name">
                 <p>Vote / Votes</p>
@@ -16,7 +14,7 @@
             <div class="details-film__stat-value">
                 <div class="details-film__stat-value__vote">
                     <div class="vote">
-                        <p class="card-film__rating">{{vote_average}}</p>
+                        <p class="vote-text">{{vote_average}}</p>
                     </div>
                     <span>/</span>
                     <div class="votes">
@@ -27,9 +25,7 @@
                 <p>{{original_title}}</p>
                 <div class="ganre">
                     {{#each genres}}
-                    <!-- Под вопросом -->
-                    <p class="card-film__info">{{this.name}}</p>
-                    <!-- Под вопросом -->
+                    <p class="details-film__info">{{this.name}}</p>
                     {{/each}}
                 </div>
             </div>
