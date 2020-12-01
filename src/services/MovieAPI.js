@@ -2,7 +2,7 @@ const API_KEY = 'c9dbb26251861a1346679dbaca9697b5';
 
 const BASE_URL = 'https://api.themoviedb.org';
 
-class MovieAPI {
+export default class MovieAPI {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
@@ -25,27 +25,22 @@ class MovieAPI {
 
   getMoviesByQuery() {
     return fetch(
-      `${BASE_URL}/3/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&language=en-US&page=${this.page}&limit=10`,
+      `${BASE_URL}/3/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&language=en-US&page=${this.page}`,
     ).then(res => res.json());
   }
 
   getMoviesById(movieid) {
     return fetch(
       `${BASE_URL}/3/movie/${movieid}?api_key=${API_KEY}&language=en-US`,
-    )
-      .then(res => res.json())
-      .then(parseres => {
-        incrementPage();
-        return parseres;
-      });
+    ).then(res => res.json());
   }
   // https://api.themoviedb.org/3/movie/157336?api_key={api_key}&append_to_response=videos
   // https://api.themoviedb.org/3/movie/157336?api_key={api_key}&append_to_response=videos,images
-  getSearchQuery() {
+  get SearchQuery() {
     return this.searchQuery;
   }
 
-  setSearchQuery(string) {
+  set SearchQuery(string) {
     this.searchQuery = string;
   }
 
@@ -65,5 +60,3 @@ class MovieAPI {
     this.page = 1;
   }
 }
-
-export default new MovieAPI();
