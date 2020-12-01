@@ -4,6 +4,7 @@ import initRouter from './services/Router';
 // import './styles/header/styles.css';
 import './styles/styles.css';
 initRouter();
+// import Test from './pages/testpage';
 
 const linkLubrary = document.querySelector('.menu-navigation__library'),
   linkHome = document.querySelector('.menu-navigation__home'),

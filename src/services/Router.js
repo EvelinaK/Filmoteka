@@ -20,20 +20,31 @@ const initRouter = () => {
         .then(() => {
           addHomePageEventHandlers();
         })
+        .then(() => {
+          // RenderComponent(initHomePage);
+        })
         .finally(() => {
           console.log('Home page is rendered');
         });
     })
-    .on(`/library`, () => {
-      //.on(rootUrl + `/library`, () => {
-      //${rootUrl}
+    .on('/library', () => {
+      //.on(rootUrl, () => {
+      console.log();
       RenderComponent(initLibraryPage);
     })
     .resolve();
+  // .on(`/library/:id`, (params, query) => {
+  //   //.on(rootUrl + `/library`, () => {
+  //   //${rootUrl}
+  //   console.log(params);
+  //   // RenderComponent(initLibraryPage(params));
+  // })
+  // .resolve();
 };
 export const navigate = path => {
   router.navigate(path);
 };
+
 // export const navigate = path => {
 //   router.navigate(rootUrl + path);
 // };
