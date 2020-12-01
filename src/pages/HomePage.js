@@ -1,23 +1,18 @@
-import API from '../services/MovieAPI';
+import MovieAPI from '../services/MovieAPI';
 import Template from '../tamplates/card.hbs';
 
 const template = `
 <div id="homePage">
     <div id="wrapper">
-    <span>Home page title</span>
-    <a href="/library">Library</a>
-    <button>Ok</button>
-<section class="films__list">
-  <div class="cards__films-wrap">
-  </div>
-</section>
-<button class="more">more</button>
-
+        <section class="films__list">
+            <div class="cards__films-wrap"></div>
+        </section>
     </div>
  </div>
 `;
 
 const init = async () => {
+  const API = new MovieAPI();
   const parser = new DOMParser();
   const DOM = parser.parseFromString(template, 'text/html');
 
@@ -28,10 +23,15 @@ const init = async () => {
       'beforeend',
       Template(movie),
     );
-    // document.querySelector('more').addEventListener('click', event => {
-    //   API.incrementPage();
-    // });
   });
+
+  //-------отвечает за смену банера. можно вынести в services
+  const refs = {
+    banner: document.querySelector('.page-header'),
+  };
+  refs.banner.className = 'page-header';
+  refs.banner.classList.add('banner-home');
+  //-------отвечает за смену банера. можно вынести в services
 
   // Обязательно возврашщать разметку
   return DOM.querySelector('#homePage').innerHTML;
@@ -40,11 +40,6 @@ const init = async () => {
 export const addEventHandlers = () => {
   document.querySelector('button').addEventListener('click', event => {
     console.log(event);
-  });
-
-  document.querySelector('.more').addEventListener('click', event => {
-    API.incrementPage();
-    console.log(API);
   });
 };
 
