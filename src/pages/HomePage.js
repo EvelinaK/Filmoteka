@@ -1,16 +1,12 @@
 import MovieAPI from '../services/MovieAPI';
 import Template from '../tamplates/card.hbs';
-const template = `
 
+const template = `
 <div id="homePage">
     <div id="wrapper">
-    <span>Home page title</span>
-    <a href="/library">Library</a>
-    <button>Ok</button>
-<section class="films__list">
-  <div class="cards__films-wrap">
-  </div>
-</section>
+        <section class="films__list">
+            <div class="cards__films-wrap"></div>
+        </section>
     </div>
  </div>
 `;

@@ -15,10 +15,12 @@ const RenderComponent = async (
   rootElement.insertAdjacentHTML('beforeend', template);
 
   // Следим за кликами на ссылку, и получаем с нее атрибут href, после этого деалем навигацию по этой ссылке через роутер
-  rootElement.addEventListener('click', event => {
-    if (event.target.nodeName === 'A') {
+  document.body.addEventListener('click', event => {
+    const link = event.target.closest('a');
+
+    if (link) {
       event.preventDefault();
-      navigate(event.target.getAttribute('href'));
+      navigate(link.getAttribute('href'));
     }
   });
 };
