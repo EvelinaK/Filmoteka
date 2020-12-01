@@ -6,6 +6,7 @@ import './styles/styles.css';
 import './styles/media.scss';
 
 initRouter();
+// import Test from './pages/testpage';
 
 const linkLubrary = document.querySelector('.menu-navigation__library'),
   linkHome = document.querySelector('.menu-navigation__home'),
