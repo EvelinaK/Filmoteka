@@ -3,6 +3,7 @@ import initRouter from './services/Router';
 // import './styles/header/style.css';
 // import './styles/header/styles.css';
 import './styles/styles.css';
+import './styles/media.scss';
 initRouter();
 
 const linkLubrary = document.querySelector('.menu-navigation__library'),

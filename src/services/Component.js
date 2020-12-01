@@ -2,8 +2,12 @@ import { navigate } from './Router';
 
 const ROOT_ELEMENT = document.querySelector('#view');
 
-const RenderComponent = async (renderFunction, rootElement = ROOT_ELEMENT) => {
-  const template = await renderFunction();
+const RenderComponent = async (
+  renderFunction,
+  params,
+  rootElement = ROOT_ELEMENT,
+) => {
+  const template = await renderFunction(params);
 
   // Очищаем всю разметук на странице
   rootElement.innerHTML = '';

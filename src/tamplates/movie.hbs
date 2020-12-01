@@ -1,0 +1,52 @@
+<!-- Под вопросом -->
+<div class="details-film">
+    <!-- Под вопросом -->
+    <div class="card-film__img">
+        <img class="card__img" src="https://image.tmdb.org/t/p/w220_and_h330_face//{{poster_path}}" alt="" />
+    </div>
+    <div class="details-film__text">
+        <h4 class="card-film__name">{{title}}</h4>
+        <div class="details-film__stat">
+            <div class="details-film__stat-name">
+                <p>Vote / Votes</p>
+                <p>Popularity</p>
+                <p>Original Title</p>
+                <p>Genre</p>
+            </div>
+            <div class="details-film__stat-value">
+                <div class="details-film__stat-value__vote">
+                    <div class="vote">
+                        <p class="card-film__rating">{{vote_average}}</p>
+                    </div>
+                    <span>/</span>
+                    <div class="votes">
+                        <p class="votes-text">{{vote_count}}</p>
+                    </div>
+                </div>
+                <p>{{popularity}}</p>
+                <p>{{original_title}}</p>
+                <div class="ganre">
+                    {{#each genres}}
+                    <!-- Под вопросом -->
+                    <p class="card-film__info">{{this.name}}</p>
+                    <!-- Под вопросом -->
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+        <div class="details-film__about">
+            <p class="about">About</p>
+            <p class="about-text">
+                {{overview}}
+            </p>
+        </div>
+        <div class="details-film__btn">
+            <div class="details-film__btn-watched">
+                <button class="btn-watched">add to Watched</button>
+            </div>
+            <div class="details-film__btn-queue">
+                <button class="btn-queue">add to queue</button>
+            </div>
+        </div>
+    </div>
+</div>
