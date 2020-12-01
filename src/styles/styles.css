@@ -67,17 +67,7 @@
   
   }
   
-  /* .card__film-rating {
-    margin-top: -14px;
-    width: 36px;
-    height: 16px;
-    background: #ff6801;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 12px;
-    color: #ffffff;
-    line-height: 14.06px;
-  } */
+ 
   
    @media only screen and (min-width: 250px) and (max-width: 768px) {
    
@@ -112,7 +102,7 @@
   }
   
   .card__item-film:nth-child(1n) {
-    /* margin-right: 0; */
+
     margin-right: 30px;
   }
   
@@ -173,22 +163,21 @@
   } 
   
   
-    /*пагинация */
+    
    /*пагинация */
   
-  a:hover {
+   /* a:hover {
     cursor: pointer;
   }
   #pagination {
     display: flex;
-    height: auto;
-    padding-top: 46px;
+    height: 100vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
   }
   
-  .control{
+  img{
     margin-top: 12px;
     background-color: white;
   }
@@ -219,20 +208,22 @@
     color: #fff;
     display: flex;
   }
+
   ul li a {
     background-color: #fff;
     line-height: 42px;
     text-align: center;
     color:black;
     /* border: 2px solid #fff; */
-    border: none;
+    /* border: none;
     border-right: 0;
     font-size: 12px;
     font-family: 'Roboto', sans-serif;;
     height: 40px;
     width: 33.4px;
-  }
-  ul li.active a {
+  }  */
+
+  /* ul li.active a {
     background-color:#ff6B08;
     color: white;
     border-radius: 15%;
@@ -244,10 +235,148 @@
   ul li:last-child a {
     border-radius: 0 5px 5px 0;
     
-  }
+  } */
+  
+    
   
 
+   /*пагинация */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .click-pag:hover {
+    cursor: pointer;
+  }
+
+  #film-pagination {
+    display: flex;
+    height: auto;
+    padding-top: 46px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
   
+  .film-control{
+    margin-top: 12px;
+    background-color: white;
+  }
+  
+  .film-page-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 374px;
+    height: 40px;
+    line-height: 25px;
+  } 
+
+  .click-pag-r{
+    text-align: center;
+    line-height: 2;
+  }
+   @media only screen and (min-width: 250px) and (max-width: 767px) {
+      .film-page-list {
+      display: flex;
+      justify-content: center;
+      width: 280px;
+      height: 40px;
+    }
+    .out-of-range{
+      display: none;
+    }
+  
+  } 
+  
+ .page-item {
+    color: #fff;
+    display: flex;
+  }
+  .film-page-list .page-item >.click-pag {
+    background-color: #fff;
+    line-height: 42px;
+    text-align: center;
+    color:black;
+
+    border: none;
+    border-right: 0;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;;
+    height: 40px;
+    width: 33.4px;
+  }
+  .film-page-list .film-pag.active > .click-pag  {
+    background-color:#ff6B08;
+    color: white;
+    border-radius: 15%;
+    width: 40px;
+  }
+  .film-page-list .film-pag:first-child .click-pag {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .film-page-list .film-pag:last-child .click-pag {
+    border-radius: 0 5px 5px 0;
+    
+  } 
+   
   /*-------------футер------------*/
   
   
