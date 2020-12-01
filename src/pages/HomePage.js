@@ -1,5 +1,6 @@
 import API from '../services/MovieAPI';
 import Template from '../tamplates/card.hbs';
+
 const template = `
 <div id="homePage">
     <div id="wrapper">
@@ -11,15 +12,10 @@ const template = `
   </div>
 </section>
 <button class="more">more</button>
+
     </div>
  </div>
 `;
-
-// const movieCard = data => `
-//   <div>
-//     <span class="title">${data.original_title}</span>
-//   </div>
-// `;
 
 const init = async () => {
   const parser = new DOMParser();
@@ -28,7 +24,6 @@ const init = async () => {
   const movieList = await API.getPopularMovies();
   console.log(movieList);
   movieList.results.forEach(movie => {
-    // DOM.querySelector('div').insertAdjacentHTML('beforeend', movieCard(movie));
     DOM.querySelector('.cards__films-wrap').insertAdjacentHTML(
       'beforeend',
       Template(movie),
