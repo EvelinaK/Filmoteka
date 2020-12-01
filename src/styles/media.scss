@@ -13,29 +13,27 @@
 
 .details-film {
   display: flex;
-  margin-bottom: 30px; // УБРАТЬ!!!!!!
 
-  // &__img {
-  //   // background-image: url(../img/Rectangle18.png);
-  // margin-right: 30px;
-  // background-color: #ff6b01;
-  // height: 514px;
-  // width: 426px;
-  // }
+  &__img {
+    margin-right: 30px;
+    background-color: #ff6b01;
+    height: 514px;
+    width: 426px;
+  }
 
   &__text {
     height: 514px;
   }
 
-  // &__name {
-  //   font-family: Roboto;
-  //   font-weight: bold;
-  //   font-size: 30px;
-  //   height: 31px;
-  //   line-height: 1;
-  //   color: #000000;
-  //   margin-bottom: 20px;
-  // }
+  &__name {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 30px;
+    height: 31px;
+    line-height: 1;
+    color: #000000;
+    margin-bottom: 20px;
+  }
 
   &__stat {
     display: flex;
@@ -85,6 +83,10 @@
     }
   }
 
+  &__info {
+    margin-right: 5px;
+  }
+
   &__about {
     margin-bottom: 20px;
   }
@@ -96,29 +98,8 @@
   }
 }
 
-.card-film__img {
-  margin-right: 30px;
-  background-color: #ff6b01;
-  height: 514px;
-  width: 426px;
-}
-
-.card-film__name {
-  font-family: Roboto;
-  font-weight: bold;
-  font-size: 30px;
-  height: 31px;
-  line-height: 1;
-  color: #000000;
-  margin-bottom: 20px;
-}
-
 .ganre {
   display: flex;
-}
-
-.card-film__info {
-  margin-right: 5px;
 }
 
 .vote {
@@ -220,15 +201,8 @@
 
   .details-film {
     &__img {
-      background-color: aquamarine;
       height: 416px;
       width: 294px;
-
-      // убирает картинку которую нужно заменить.
-      // не забудь удалить
-      & img {
-        display: none;
-      }
     }
 
     &__text {
@@ -268,16 +242,9 @@
     flex-direction: column;
 
     &__img {
-      background-color: aquamarine;
       height: 416px;
       width: 280px;
       margin-bottom: 30px;
-
-      // убирает картинку которую нужно заменить.
-      // не забудь убрать
-      & img {
-        display: none;
-      }
     }
 
     &__text {
