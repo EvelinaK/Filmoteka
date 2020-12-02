@@ -4,19 +4,16 @@ import initHomePage, {
   addEventHandlers as addHomePageEventHandlers,
 } from '../pages/HomePage';
 import initLibraryPage from '../pages/LibraryPage';
+import initMoviePage from '../pages/MoviePage';
 
-const rootUrl = `${window.location.protocol}//${window.location.host}`;
 const root = null;
-//const useHash = true;
-//const hash = '#!';
-//const router = new Navigo(root, useHash, hash);
-const router = new Navigo(root);
+const useHash = false;
+const router = new Navigo(root, useHash);
 
 const initRouter = () => {
   router
-    .on('/', () => {
-      //.on(rootUrl, () => {
-      RenderComponent(initHomePage)
+    .on('/', (query) => {
+      RenderComponent(initHomePage, query)
         .then(() => {
           addHomePageEventHandlers();
         })
@@ -24,18 +21,23 @@ const initRouter = () => {
           console.log('Home page is rendered');
         });
     })
-    .on(`/library`, () => {
-      //.on(rootUrl + `/library`, () => {
-      //${rootUrl}
+    .on('/library', () => {
       RenderComponent(initLibraryPage);
+    })
+    .on(`/library/queue`, () => {
+      RenderComponent();
+    })
+    .on(`/library/watched`, () => {
+      RenderComponent();
+    })
+    .on('/movie/:id', params => {
+      RenderComponent(initMoviePage, params);
     })
     .resolve();
 };
+
 export const navigate = path => {
   router.navigate(path);
 };
-// export const navigate = path => {
-//   router.navigate(rootUrl + path);
-// };
 
 export default initRouter;
