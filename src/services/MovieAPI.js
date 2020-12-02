@@ -12,9 +12,9 @@ export default class MovieAPI {
     this.page = 1;
   }
 
-  getPopularMovies() {
+  getPopularMovies(page) {
     return fetch(
-      `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.page}`,
+      `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`,
     ).then(res => res.json());
   }
   getTrendingMovies() {

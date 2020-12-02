@@ -5,19 +5,15 @@ import initHomePage, {
 } from '../pages/HomePage';
 import initLibraryPage from '../pages/LibraryPage';
 import initMoviePage from '../pages/MoviePage';
-import Pagination from '../components/pagination';
-debugger;
-const P = new Pagination();
-const data = P.initPag();
-console.log(data);
+
 const root = null;
-const useHash = true;
+const useHash = false;
 const router = new Navigo(root, useHash);
 
 const initRouter = () => {
   router
-    .on('/', () => {
-      RenderComponent(initHomePage)
+    .on('/', (query) => {
+      RenderComponent(initHomePage, query)
         .then(() => {
           addHomePageEventHandlers();
         })
