@@ -1,18 +1,15 @@
 <div id="film-pagination">
-    <ul class="film-page-list">
-        <li class="film-page-item previous no">
-            <a class="click-pag" onclick="createPagination(pages, 12)">
-                <img class="film-control" src="../images/arrow-right.png" alt=""></a></li>
-        <li class="film-pag no page-item"><a class="click-pag" onclick="createPagination(pages, 1)">1</a></li>
-        <li class="film-pag out-of-range"><a class="click-pag-r" onclick="createPagination(pages,11)">...</a></li>
-        <li class="film-pag page-item no"><a class="click-pag" onclick="createPagination(pages, 12)">12</a></li>
-        <li class="film-pag page-item no"><a class="click-pag" onclick="createPagination(pages, 12)">13</a></li>
-        <li class="film-pag page-item active"><a class="click-pag" onclick="createPagination(pages, 14)">14</a></li>
-        <li class="film-pag page-item no"><a class="click-pag" onclick="createPagination(pages, 14)">15</a></li>
-        <li class="film-pag page-item no"><a class="click-pag" onclick="createPagination(pages, 14)">16</a></li>
-        <li class="film-pag out-of-range"><a class="click-pag-r" onclick="createPagination(pages,15)">...</a></li>
-        <li class="film-pag page-item no"><a class="click-pag" onclick="createPagination(pages, pages)">25</a></li>
-        <li class="film-pag page-item next no"><a class="click-pag" onclick="createPagination(pages, 14)">
-                <img class="film-control" src="../images/arrow-left.png" alt=""></a></li>
-    </ul>
+  <ul class="film-page-list">
+    <li class="film-page-item previous no">
+      <a class="click-pag"><img class="film-control" src="../images/arrow-right.png" alt=""></a>
+    </li>
+
+    <!--  Здесь рендерим кнопочки с помощью JS  -->
+
+    {{{paginations}}}
+
+    <li class="film-pag page-item next no">
+      <a class="click-pag"><img class="film-control" src="../images/arrow-left.png" alt=""></a>
+    </li>
+  </ul>
 </div>
