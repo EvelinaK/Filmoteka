@@ -1,4 +1,4 @@
-// import MovieAPI from '../services/MovieAPI';
+import MovieAPI from '../services/MovieAPI';
 
 // 1)модуль класс
 // (
@@ -12,13 +12,13 @@
 //     `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.page}`,
 //   ).then(res => res.json());
 // }
-debugger;
+
 export default class Pagination {
   constructor() {
     this.pugPage = 1;
     this.storage_type = {};
     this.searchQuery = '';
-    this.pugPage = 1;
+    this.AllPage = 1;
   }
 
   // renderPage(){
@@ -30,6 +30,7 @@ export default class Pagination {
     const API = new MovieAPI();
     API.getPopularMovies().then(data => {
       const { total_results, page, total_pages, results } = data;
+      this.AllPage = total_pages;
       console.log(data);
       // const duffElem = document.createElement('div');
       // duffElem.insertAdjacentHTML('beforeend', Header());
