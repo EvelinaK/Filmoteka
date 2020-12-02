@@ -7,13 +7,13 @@ import initLibraryPage from '../pages/LibraryPage';
 import initMoviePage from '../pages/MoviePage';
 
 const root = null;
-const useHash = true;
+const useHash = false;
 const router = new Navigo(root, useHash);
 
 const initRouter = () => {
   router
-    .on('/', () => {
-      RenderComponent(initHomePage)
+    .on('/', (query) => {
+      RenderComponent(initHomePage, query)
         .then(() => {
           addHomePageEventHandlers();
         })
@@ -23,6 +23,12 @@ const initRouter = () => {
     })
     .on('/library', () => {
       RenderComponent(initLibraryPage);
+    })
+    .on(`/library/queue`, () => {
+      RenderComponent();
+    })
+    .on(`/library/watched`, () => {
+      RenderComponent();
     })
     .on('/movie/:id', params => {
       RenderComponent(initMoviePage, params);

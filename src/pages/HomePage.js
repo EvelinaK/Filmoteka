@@ -1,46 +1,27 @@
 import MovieAPI from '../services/MovieAPI';
-import Template from '../tamplates/card.hbs';
 
-const template = `
-<div id="homePage">
-    <div id="wrapper">
-        <section class="films__list">
-            <div class="cards__films-wrap"></div>
-        </section>
-    </div>
- </div>
-`;
+import Header from '../tamplates/header.hbs';
+import SectionCards from '../tamplates/card.hbs';
+import SectionPagination from '../tamplates/pagination.hbs';
+import Footer from '../tamplates/footer.hbs';
+import { initPagination } from '../components/pagination';
 
-const init = async () => {
+const init = async (query = 'page=1') => {
   const API = new MovieAPI();
-  const parser = new DOMParser();
-  const DOM = parser.parseFromString(template, 'text/html');
+  const queryParams = new URLSearchParams(query);
+  const data = await API.getPopularMovies(queryParams.get('page'));
+  const root = document.createElement('div');
 
-  const movieList = await API.getPopularMovies();
-  console.log(movieList);
-  movieList.results.forEach(movie => {
-    DOM.querySelector('.cards__films-wrap').insertAdjacentHTML(
-      'beforeend',
-      Template(movie),
-    );
-  });
+  root.insertAdjacentHTML('beforeend', Header());
+  root.insertAdjacentHTML('beforeend', SectionCards(data.results));
+  root.insertAdjacentHTML('beforeend', SectionPagination({ paginations: initPagination(data.page, data.total_pages, '/') }));
+  root.insertAdjacentHTML('beforeend', Footer());
 
-  //-------отвечает за смену банера. можно вынести в services
-  const refs = {
-    banner: document.querySelector('.page-header'),
-  };
-  refs.banner.className = 'page-header';
-  refs.banner.classList.add('banner-home');
-  //-------отвечает за смену банера. можно вынести в services
-
-  // Обязательно возврашщать разметку
-  return DOM.querySelector('#homePage').innerHTML;
+  return root.innerHTML;
 };
 
 export const addEventHandlers = () => {
-  document.querySelector('button').addEventListener('click', event => {
-    console.log(event);
-  });
+
 };
 
 // Other functions
