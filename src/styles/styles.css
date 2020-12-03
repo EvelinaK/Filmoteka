@@ -31,8 +31,8 @@ a {
   justify-content: center;
   margin: 0 auto;
   margin-top: 50px;
-
   width: 1024px;
+  /* width: 33%; */
 }
 .cards__films-wrap-pagination {
   display: flex;
@@ -94,6 +94,7 @@ a {
     margin: 0 auto;
     margin-top: 50px;
     width: 768px;
+    /* width: 60%; */
   }
 
   .cards__films-list {
@@ -115,12 +116,13 @@ a {
   }
 
   .card__item-film:nth-child(1n) {
-    margin-right: 30px;
+    margin: 0 30px 0 30px;
   }
 
   .card__item-film:nth-last-child(-n + 1) {
     margin-bottom: 0px;
   }
+
   .card__list-name {
     font-family: Roboto;
     font-weight: 500;
@@ -164,9 +166,9 @@ a {
   .card__list-name {
     padding: 10px 0 0 0;
   }
-  .card__item-film:nth-child(1n) {
+  /* .card__item-film:nth-child(1n) {
     margin-right: 0;
-  }
+  } */
 
   .card__item-film:nth-last-child(-n + 1) {
     margin-bottom: 0;
