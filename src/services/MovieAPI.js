@@ -23,7 +23,7 @@ export default class MovieAPI {
     ).then(res => res.json());
   }
 
-  getMoviesByQuery() {
+  getMoviesByQuery(qwery, page) {
     return fetch(
       `${BASE_URL}/3/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&language=en-US&page=${this.page}`,
     ).then(res => res.json());
