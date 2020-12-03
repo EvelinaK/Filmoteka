@@ -2,7 +2,7 @@ import MovieAPI from '../services/MovieAPI';
 import Header from '../tamplates/header.hbs';
 import details from '../tamplates/movie.hbs';
 import Footer from '../tamplates/footer.hbs';
-
+import refs from '../services/refs.js';
 // const init = async params => {
 //   const API = new MovieAPI();
 //   const movie = await API.getMoviesById(params.id);
@@ -34,7 +34,7 @@ const init = async params => {
     duffElem.insertAdjacentHTML('beforeend', Header());
     duffElem.insertAdjacentHTML('beforeend', details(data));
     duffElem.insertAdjacentHTML('beforeend', Footer());
-
+    refs;
     return duffElem.innerHTML;
   });
 };
