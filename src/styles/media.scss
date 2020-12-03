@@ -1,0 +1,288 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 890px;
+  margin: 0 auto;
+}
+
+.details-film {
+  display: flex;
+
+  &__img {
+    margin-right: 30px;
+    background-color: #ff6b01;
+    height: 514px;
+    width: 426px;
+  }
+
+  &__text {
+    height: 514px;
+  }
+
+  &__name {
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 30px;
+    height: 31px;
+    line-height: 1;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+
+  &__stat {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  &__stat-name {
+    width: 80px;
+    margin-right: 85px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & p {
+      height: 16px;
+      font-family: Roboto;
+      font-weight: 500;
+      font-size: 12px;
+      color: #8c8c8c;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__stat-value {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & p {
+      height: 16px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      color: #000000;
+    }
+
+    &__vote {
+      display: flex;
+
+      & span {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  &__info {
+    margin-right: 5px;
+
+    &:not(:last-child)::after {
+      content: ',';
+    }
+  }
+
+  &__about {
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    width: 287px;
+    height: 44px;
+    display: flex;
+  }
+}
+
+.ganre {
+  display: flex;
+}
+
+.vote {
+  width: 36px;
+  height: 16px;
+  background: #ff6b01;
+  border-radius: 5px;
+  margin-right: 4px;
+  display: flex;
+  justify-content: center;
+
+  & p {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+}
+
+.votes {
+  width: 36px;
+  height: 16px;
+  background: #f7f7f7;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+
+  & p {
+    line-height: 16px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #000;
+  }
+}
+
+.about {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #000000;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+
+  &-text {
+    width: 426px;
+    height: 141px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: #000000;
+  }
+}
+
+.btn-watched {
+  border: none;
+  width: 136px;
+  height: 44px;
+  background: #ff6b01;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-right: 15px;
+}
+
+.btn-queue {
+  width: 136px;
+  height: 44px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: #000000;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@media only screen and (min-width: 250px) and (max-width: 768px) {
+  .container {
+    width: 615px;
+  }
+
+  .details-film {
+    &__img {
+      height: 416px;
+      width: 294px;
+    }
+
+    &__text {
+      height: 454px;
+    }
+
+    &__stat-name {
+      width: 70px;
+      margin-right: 40px;
+    }
+
+    &__stat-value {
+      &__vote {
+        & span {
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+
+  .about {
+    &-text {
+      width: 294px;
+      height: 199px;
+    }
+  }
+}
+
+@media only screen and (min-width: 250px) and (max-width: 320px) {
+  .container {
+    width: 280px;
+    margin: 0 auto;
+  }
+
+  .details-film {
+    display: flex;
+    flex-direction: column;
+
+    &__img {
+      height: 416px;
+      width: 280px;
+      margin-bottom: 30px;
+    }
+
+    &__text {
+      height: 482px;
+      width: 280px;
+    }
+
+    &__name {
+      font-size: 20px;
+      line-height: 23px;
+      height: 21px;
+    }
+
+    &__about {
+      margin-bottom: 40px;
+    }
+
+    &__btn {
+      width: 280px;
+    }
+  }
+
+  .about {
+    &-text {
+      width: 280px;
+      height: 217px;
+    }
+  }
+
+  .btn-watched {
+    width: 132px;
+  }
+
+  .btn-queue {
+    width: 132px;
+  }
+}

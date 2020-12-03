@@ -1,142 +1,80 @@
 import MovieAPI from '../services/MovieAPI';
-import Template from '../tamplates/card.hbs';
-const template = `
 
-<div id="homePage">
-    <div id="wrapper">
-    <span>Home page title</span>
-    <a href="/library">Library</a>
-    <button>Ok</button>
-<section class="films__list">
-  <div class="cards__films-wrap">
-  </div>
-</section>
-    </div>
- </div>
-`;
+import Header from '../tamplates/header.hbs';
+import SectionCards from '../tamplates/card.hbs';
+import SectionPagination from '../tamplates/pagination.hbs';
+import Footer from '../tamplates/footer.hbs';
+import { initPagination } from '../components/pagination';
 
-// const movieCard = data => `
-//   <div>
-//     <span class="title">${data.original_title}</span>
-//   </div>
-// `;
-
-const init = async () => {
+const init = async (query = 'page=1') => {
   const API = new MovieAPI();
-  const parser = new DOMParser();
-  const DOM = parser.parseFromString(template, 'text/html');
+  const queryParams = new URLSearchParams(query);
+  const data = await API.getPopularMovies(queryParams.get('page'));
+  const root = document.createElement('div');
 
-  const movieList = await API.getPopularMovies();
-  console.log(movieList);
-  movieList.results.forEach(movie => {
-    // DOM.querySelector('div').insertAdjacentHTML('beforeend', movieCard(movie));
-    DOM.querySelector('.cards__films-wrap').insertAdjacentHTML(
-      'beforeend',
-      Template(movie),
-    );
-  });
+  root.insertAdjacentHTML('beforeend', Header());
+  root.insertAdjacentHTML('beforeend', SectionCards(data.results));
+  root.insertAdjacentHTML(
+    'beforeend',
+    SectionPagination({
+      paginations: initPagination(data.page, data.total_pages, '/'),
+    }),
+  );
+  root.insertAdjacentHTML('beforeend', Footer());
 
-  // Обязательно возврашщать разметку
-  return DOM.querySelector('#homePage').innerHTML;
+  return root.innerHTML;
 };
 
-export const addEventHandlers = () => {
-  document.querySelector('button').addEventListener('click', event => {
-    console.log(event);
-  });
-};
+export const addEventHandlers = () => {};
 
 // Other functions
 
 export default init;
 
-{
-  /* <div id="wrapper">
-<section class="films__list">
-  <div class="cards__films-wrap">
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
+export const sabmitHendler = async event => {
+  // event.preventDefault();
+  const searchQuery = event.target.querySelector('input[name="text"]').value;
+  // const textError = document.querySelector('.search__libraryFilmList');
 
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
+  if (searchQuery !== '') {
+    const data = await API.getMoviesByQuery(searchQuery);
+    console.log(data);
+    const { total_results } = data;
+    if (total_results === 0) {
+      // textError.classList.remove('headen');
+      console.log(
+        'Search result not successful. Enter the correct movie name and',
+      );
+    } else {
+      console.log(`${total_results}кол фильмов`);
+      // results.forEach(element => {
+      //   if (element.title === searchQuery) {
+      //     console.log(element);
+      //   }
+      // });
+    }
+    event.target.reset();
+    console.log(searchQuery);
+  }
+};
 
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
+const sabmitWatched = event => {
+  console.log(event);
+};
 
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
+const sabmitQueue = event => {
+  console.log(event);
+};
 
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
+// export const addEventHandlers = () => {
+//   document
+//     .querySelector('.search__navLibraryBtn-Watched')
+//     .addEventListener('click', sabmitWatched);
+//   document
+//     .querySelector('.search__navLibraryBtn-Queue')
+//     .addEventListener('click', sabmitQueue);
 
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
-
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-      <span class="card__film-rating">10.0</span>
-    </div>
-
-    <div class="card__item-film">
-      <img class="card__img" src="img/Rectangle 5.png" alt="" width="274" height="398" />
-      <h4 class="card__film-name">GREYHOUND</h4>
-      <p class="card__film-info">Drama, Action | 2020</p>
-
-      <span class="card__film-rating">10.0</span>
-    </div>
-  </div>
-  <div id="pagination">
-    <ul>
-      <li class="page-item previous no">
-        <a onclick="createPagination(pages, 12)">
-          <img class="control" src="./img/arrow-right.png" alt=""></a></li>
-      <li class="no page-item"><a onclick="createPagination(pages, 1)">1</a></li>
-      <li class="out-of-range"><a onclick="createPagination(pages,11)">...</a></li>
-      <li class="page-item no"><a onclick="createPagination(pages, 12)">12</a></li>
-      <li class="page-item no"><a onclick="createPagination(pages, 12)">13</a></li>
-      <li class="page-item active"><a onclick="createPagination(pages, 14)">14</a></li>
-      <li class="page-item no"><a onclick="createPagination(pages, 14)">15</a></li>
-      <li class="page-item no"><a onclick="createPagination(pages, 14)">15</a></li>
-      <li class="out-of-range"><a onclick="createPagination(pages,15)">...</a></li>
-      <li class="page-item no"><a onclick="createPagination(pages, pages)">25</a></li>
-      <li class="page-item next no"><a onclick="createPagination(pages, 14)">
-          <img class="control" src="./img/arrow-left.png" alt=""></a></li>
-    </ul>
-  </div>
-</section>
-
-
- */
-}
+//   document
+//     .querySelector('.form-search')
+//     .addEventListener('submit', sabmitHendler);
+// };
