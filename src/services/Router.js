@@ -10,7 +10,6 @@ import initLibraryQueue from '../pages/LibraryQueue';
 const root = null;
 const useHash = true;
 const router = new Navigo(root, useHash);
-debugger;
 const initRouter = () => {
   router
     .on(`/search`, params => {
