@@ -11,6 +11,7 @@ const RenderComponent = async (
 
   // Очищаем всю разметук на странице
   rootElement.innerHTML = '';
+  // query = '';
   // Вставляем новую разметку на страницу
   rootElement.insertAdjacentHTML('beforeend', template);
 
