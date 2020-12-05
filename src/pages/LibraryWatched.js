@@ -28,7 +28,7 @@ const init = async () => {
 
   return await API.getPopularMovies().then(data => {
     // const { results } = data;
-    // console.log(results);
+    // console.log(data);
     const duffElem = document.createElement('div');
     duffElem.insertAdjacentHTML('beforeend', Header());
     duffElem.insertAdjacentHTML('beforeend', SectionCards()); //results--пебебрасываем в страницу секшн кард как параметр//
