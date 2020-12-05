@@ -11,9 +11,13 @@ const root = null;
 const useHash = true;
 const router = new Navigo(root, useHash);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 493d1bcf200f7863abe17abdb76a414b3e58a984
+=======
+
+>>>>>>> 0206136cce33bd4c87e55b0fb60c33cc0cb9e039
 const initRouter = () => {
   router
     .on(`/search`, params => {

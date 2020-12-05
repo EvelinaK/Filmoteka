@@ -9,16 +9,24 @@
 .container {
   width: 890px;
   margin: 0 auto;
+  background-color: brown;
 }
 
 .details-film {
   display: flex;
+  margin: 0 auto;
+  width: 890px;
 
   &__img {
     margin-right: 30px;
-    background-color: #ff6b01;
-    height: 514px;
-    width: 426px;
+    // background-color: #ff6b01;
+    // height: 514px;
+    // width: 426px;
+
+    & img {
+      height: 514px;
+      width: 426px;
+    }
   }
 
   &__text {
@@ -200,7 +208,8 @@
 
 @media only screen and (min-width: 250px) and (max-width: 768px) {
   .container {
-    width: 615px;
+    width: 616px;
+    background-color: burlywood;
   }
 
   .details-film {

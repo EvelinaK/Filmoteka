@@ -30,7 +30,10 @@ const init = async () => {
     // const { results } = data;
     // console.log(results);
     const duffElem = document.createElement('div');
-    duffElem.insertAdjacentHTML('beforeend', Header());
+    duffElem.insertAdjacentHTML(
+      'beforeend',
+      Header({ banner: 'watched', btn: 'on', form: 'off' }),
+    );
     duffElem.insertAdjacentHTML('beforeend', SectionCards()); ////results///
     duffElem.insertAdjacentHTML('beforeend', SectionPagination());
     duffElem.insertAdjacentHTML('beforeend', Footer());
