@@ -10,7 +10,7 @@ const init = async (query = 'page=1') => {
   const API = new MovieAPI();
   const queryParams = new URLSearchParams(query);
   const data = await API.getPopularMovies(queryParams.get('page'));
-  // console.log(data);
+  console.log(data);
   const root = document.createElement('div');
 
   root.insertAdjacentHTML('beforeend', Header());
@@ -47,6 +47,7 @@ export default init;
 export const sabmitHendler = async event => {
   //--ds
   // event.preventDefault();
+  filmApiService.query = e.currentTarget.elements.query.value;
   const searchQuery = event.target.querySelector('input[name="text"]').value;
 
   if (searchQuery !== '') {

@@ -10,23 +10,33 @@ const templateactive = page => `
 </li>
 `;
 
+const templateFitst = page => `
+  <li class="film-pag no page-item">
+    <a class="click-pag" href="/?page=${page}">${page}</a>
+  </li>
+`;
+const templateLast = page => `
+  <li class="film-pag no page-item">
+    <a class="click-pag" href="/?page=${page}">${page}</a>
+  </li>
+`;
 const templateprev = () => `
 <li class="film-page-item previous no">
-  <a class="click-pag" onclick="return prevClick();"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <button class="click-pag" onclick="return prevClick();"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M12.6667 8H3.33334" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00001 12.6667L3.33334 8.00004L8.00001 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
-  </a>
+  </button>
 </li>
 `;
 
 const templatenext = () => `
 <li class="film-pag page-item next no">
-  <a class="click-pag" onclick="return nextClick();"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <button class="click-pag" onclick="return nextClick();"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M3.33335 8H12.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00002 12.6667L12.6667 8.00004L8.00002 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
-  </a>
+  </button>
 </li> 
 `;
 
@@ -44,10 +54,10 @@ export const renderPagination = currentPage => {
   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
 
   let pagData = registerData(currentPage);
-  // console.log(JSON.stringify(pagData));
-
+  console.log(JSON.stringify(pagData));
+  //--функция которая сздает кнопку generatefirspageputton
   links.push(renderPrevBtn(currentPage));
-
+  //--функция которая сздает кнопку generatefirspageputton
   for (let i = 0; i < pagData.length; i++) {
     if (pagData[i] == currentPage) {
       links.push(templateactive(pagData[i]));
@@ -55,7 +65,7 @@ export const renderPagination = currentPage => {
       links.push(template(pagData[i]));
     }
   }
-
+  //--функция которая сздает кнопку generatefirspageputton
   links.push(renderNextBtn(currentPage, totalPages));
 
   // console.log(links.join(''));
@@ -84,21 +94,23 @@ function nextClick() {
   renderPagination(activePageID);
 }
 
-function renderPrevBtn(id) {
+function renderPrevBtn(currentPage) {
   let prevBtnHTML = '';
-  if (id > 1) {
+  if (currentPage > 1) {
     prevBtnHTML = templateprev();
+    currentPage--;
   }
 
   return prevBtnHTML;
 }
 
-function renderNextBtn(id) {
+function renderNextBtn(currentPage) {
   let nextBtnHTML = '';
   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
 
-  if (id < totalPages) {
+  if (currentPage < totalPages) {
     nextBtnHTML = templatenext(totalPages);
+    currentPage++;
   }
 
   return nextBtnHTML;
@@ -185,3 +197,17 @@ function addDotsBlock() {
 //   const threeDotsEl = addThreeDotsBlock();
 //   wrapper.insertBefore(threeDotsEl, wrapper[1]);
 // }
+debugger;
+
+//--функция которая сздает кнопку generatefirspageputton
+
+function generatefirspageputton() {
+  const dots = document.createElement('div');
+  dots.classList.add('dots');
+  dots.innerText = '...';
+  return dots;
+}
+
+// если в массиве нет 1 , то рисую кнопку и добавлчяю
+// в основной массив если не единицы , а есть двойка , то троеточие не рисую
+// если нет ни единицы ни двойки троеточие рисую
