@@ -20,6 +20,7 @@ const initRouter = () => {
       });
     })
     .on('/', query => {
+      console.log(query);
       RenderComponent(initHomePage, query)
         .then(() => {
           addHomePageEventHandlers();
