@@ -12,8 +12,12 @@ const init = async (query = 'page=1') => {
   const data = await API.getPopularMovies(queryParams.get('page'));
   const root = document.createElement('div');
 
-  root.insertAdjacentHTML('beforeend', Header());
+  root.insertAdjacentHTML(
+    'beforeend',
+    Header({ banner: 'home', btn: 'off', form: 'on' }),
+  );
   root.insertAdjacentHTML('beforeend', SectionCards(data.results));
+  console.log(data.results);
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
