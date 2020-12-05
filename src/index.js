@@ -4,8 +4,6 @@ import initRouter from './services/Router';
 // import './styles/header/styles.css';
 import './styles/styles.css';
 import './styles/media.scss';
-import 'font-awesome/css/font-awesome.css';
-import 'font-awesome/fonts/fontawesome-webfont.woff';
 initRouter();
 
 // const linkLubrary = document.querySelector('.menu-navigation__library'),
