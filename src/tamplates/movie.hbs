@@ -4,7 +4,8 @@
 
 <div class="details-film">
     <div class="details-film__img">
-        <img src="https://image.tmdb.org/t/p/w220_and_h330_face/{{poster_path}}" alt="" />
+        <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="" />
+
     </div>
     <div class="details-film__text">
         <h4 class="details-film__name">{{title}}</h4>
@@ -29,7 +30,7 @@
                 <p>{{original_title}}</p>
                 <div class="ganre">
                     {{#each genres}}
-                    <p class="details-film__info">{{this.name}}</p>
+                    <p class="details-film__info">{{name}}</p>
                     {{/each}}
                 </div>
             </div>

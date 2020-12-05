@@ -1,52 +1,43 @@
-/* html {
-    box-sizing: border-box;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  } */
-
-a {
-  text-decoration: none;
-  font-family: Roboto;
-  color: #000;
-}
-
-#wrapper {
+/* #wrapper {
   position: relative;
   overflow: hidden;
   width: 100%;
-}
+} */
 
+.cards__films-wrap {
+  /* background-color: cadetblue; */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  /* flex-wrap: wrap;
+  
+   */
+  margin: 0 auto;
+  margin-top: 60px;
+  width: 100%;
+
+  /* width: 1024px; */
+}
 .card__film-name,
 .card__film-info {
   padding: 0px;
   margin: 0;
-}
-.cards__films-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  margin-top: 50px;
-
-  width: 1024px;
 }
 .cards__films-wrap-pagination {
   display: flex;
 }
 
 .card__item-film {
-  margin-right: 30px;
-  padding: 0;
+  /* margin-right: 30px; */
+  /* padding: 0; */
   font-family: Roboto;
   font-weight: 500;
   font-style: normal;
   font-size: 12px;
   line-height: 14px;
-  padding-top: 10px;
+  margin-bottom: 30px;
+  /* padding-top: 10px; */
 }
 
 .card__img {
@@ -64,7 +55,11 @@ a {
   text-transform: uppercase;
 }
 .card__film-info {
-  font-size: 10px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
   color: #ff6801;
 }
 
@@ -72,11 +67,11 @@ a {
   .cards__films-wrap {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    justify-content: space-between;
     margin: 0 auto;
-    margin-top: 50px;
-    width: 768px;
+    margin-top: 60px;
+    width: 100%;
   }
 
   .cards__films-list {
@@ -87,23 +82,25 @@ a {
     margin-bottom: 50px;
   }
   .card__item-film {
-    margin-right: 30px;
+    /* margin-right: 30px; */
     padding: 0;
+    /* background-color: coral; */
+    width: 47%;
+    height: 429px;
   }
 
-  .card__img-film {
-    position: relative;
-    width: 293px;
+  .card__img {
+    width: 100%;
     height: 398px;
   }
 
-  .card__item-film:nth-child(1n) {
-    margin-right: 30px;
-  }
+  /* .card__item-film:nth-child(1n) { */
+  /* margin-right: 30px; */
+  /* } */
 
-  .card__item-film:nth-last-child(-n + 1) {
+  /* .card__item-film:nth-last-child(-n + 1) {
     margin-bottom: 0;
-  }
+  } */
   .card__list-name {
     font-family: Roboto;
     font-weight: 500;
@@ -129,29 +126,34 @@ a {
 @media only screen and (min-width: 250px) and (max-width: 320px) {
   .cards__films-wrap {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* flex-wrap: wrap;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 auto; */
     margin-top: 50px;
-    margin-bottom: 100px;
-    width: 319px;
+    /* margin-bottom: 100px; */
+    width: 100%;
+  }
+
+  .card__item-film {
+    height: 398px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: cornflowerblue;
   }
 
   .card__img {
-    width: 280px;
-    height: 402px;
+    width: 100%;
+    height: 398px;
+    /* display: none; */
   }
-  .card__img {
-    width: 280px;
-    height: 402px;
-  }
-  .card__item-film:nth-child(1n) {
+  /* .card__item-film:nth-child(1n) {
     margin-right: 0;
   }
 
   .card__item-film:nth-last-child(-n + 1) {
     margin-bottom: 0;
-  }
+  } */
 }
 
 /*пагинация */
@@ -296,6 +298,8 @@ a {
   border-radius: 15%;
   width: 40px;
 }
+
+
 .film-page-list .film-pag:first-child .click-pag {
   border-radius: 5px 0 0 5px;
 }
@@ -306,7 +310,7 @@ a {
 
 
 
-html {
+/* html {
   box-sizing: border-box;
 }
 *,
@@ -317,9 +321,11 @@ html {
 body {
   margin: 0;
   padding: 0;
-}
+} */
 .page-header {
   position: relative;
+  margin: 0 auto;
+  /* display: none; */
 }
 .page-header::after {
   content: '';
@@ -332,7 +338,7 @@ body {
   z-index: 1;
 }
 .banner-home {
-  background-image: url(../images/banner-home.png);
+  background-image: url(../../images/banner-home.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 1024px;
@@ -341,7 +347,7 @@ body {
   z-index: 0;
 }
 .banner-watched {
-  background-image: url(../images/banner-watched.png);
+  background-image: url(../../images/banner-watched.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 1024px;
@@ -350,7 +356,7 @@ body {
   z-index: 0;
 }
 .banner-detalis {
-  background-image: url(../images/banner-detalis.png);
+  background-image: url(../../images/banner-detalis.png);
   background-repeat: no-repeat;
   background-size: cover;
   width: 1024px;
@@ -411,6 +417,7 @@ body {
   position: absolute;
   width: 100%;
   height: 2px;
+  top: 14px;
   left: 0px;
   z-index: 4;
 }
@@ -442,9 +449,17 @@ body {
   background-color: #ff6b08;
 }
 .menu-library {
-  display: none;
+  /* display: block; */
   margin: 0;
   padding: 0;
+}
+
+.on {
+  display: block;
+}
+
+.off {
+  display: none;
 }
 .menu-library__watched {
   position: absolute;
@@ -530,18 +545,21 @@ body {
 }
 
 @media (max-width: 768px) {
+  .page-header {
+    display: none;
+  }
   .page-header::after {
-    width: 768px;
+    width: 100%;
     height: 230px;
   }
   .banner-home {
-    background-image: url(../images/banner-home768.png);
-    width: 768px;
+    background-image: url(../../images/banner-home768.png);
+    width: 100%;
     height: 230px;
   }
   .banner-watched {
-    background-image: url(../images/banner-watched768.png);
-    width: 768px;
+    background-image: url(../../images/banner-watched768.png);
+    width: 100%;
     height: 230px;
   }
   .menu-navigation__home {
@@ -569,15 +587,15 @@ body {
     width: 320px;
   }
   .banner-home {
-    background-image: url(../images/banner-home320.png);
+    background-image: url(../../images/banner-home320.png);
     width: 320px;
   }
   .banner-watched {
-    background-image: url(../images/banner-watched320.png);
+    background-image: url(../../images/banner-watched320.png);
     width: 320px;
   }
   .banner-detalis {
-    background-image: url(../images/banner-detalis320.png);
+    background-image: url(../../images/banner-detalis320.png);
     width: 320px;
   }
   .site-logo__icon {
