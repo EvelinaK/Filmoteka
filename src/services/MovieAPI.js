@@ -34,8 +34,7 @@ export default class MovieAPI {
       `${BASE_URL}/3/movie/${movieid}?api_key=${API_KEY}&language=en-US`,
     ).then(res => res.json());
   }
-  // https://api.themoviedb.org/3/movie/157336?api_key={api_key}&append_to_response=videos
-  // https://api.themoviedb.org/3/movie/157336?api_key={api_key}&append_to_response=videos,images
+
   get SearchQuery() {
     return this.searchQuery;
   }
