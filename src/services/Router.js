@@ -10,7 +10,7 @@ import initLibraryQueue from '../pages/LibraryQueue';
 const root = null;
 const useHash = true;
 const router = new Navigo(root, useHash);
-debugger;
+
 const initRouter = () => {
   router
     .on(`/search`, params => {
@@ -20,6 +20,7 @@ const initRouter = () => {
       });
     })
     .on('/', query => {
+      console.log(query);
       RenderComponent(initHomePage, query)
         .then(() => {
           addHomePageEventHandlers();
