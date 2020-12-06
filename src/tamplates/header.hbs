@@ -1,8 +1,8 @@
 <header class="page-header banner-{{banner}}">
+    <div class="banner-effect"></div>
     <div class="container">
         <div class="header-content">
             <div class="site-logo">
-                {{!-- <img class="site-logo__icon" src="../src/images/icons/film../.png" alt=""> --}}
                 <a href="#" class="site-logo__link">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -24,11 +24,25 @@
                             stroke-linejoin="round" />
                     </svg><span>Filmoteka</span> </a>
             </div>
-            <!-- изначально display:block,при нажатии кнопки ставим display:none -->
             <div class="menu-search {{form}}">
                 <input class="menu-search__films" type="text" value="" name="query" autocomplete="off"
                     placeholder="Поиск фильмов">
-                <img class="menu-search__icon" src="../images/icons/search2.png" alt="">
+                {{!-- <img class="menu-search__icon" src="../images/icons/search2.png" alt=""> --}}
+                <a href="#" class="menu-search__icon">
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4.5 8.5C6.70914 8.5 8.5 6.70914 8.5 4.5C8.5 2.29086 6.70914 0.5 4.5 0.5C2.29086 0.5 0.5 2.29086 0.5 4.5C0.5 6.70914 2.29086 8.5 4.5 8.5Z"
+                            stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.49995 3.49995L1.32495 1.32495" stroke="white" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+            </div>
+            <div class="menu-library {{btn}}">
+                <button class="menu-library__watched">WATCHED</button>
+                <button class="menu-library__queue">QUEUE</button>
             </div>
             <ul class="menu-navigation">
                 <li class="menu-navigation__item">
@@ -38,11 +52,6 @@
                     <a href="/library" class="menu-navigation__library">MY LIBRARY</a>
                 </li>
             </ul>
-            <!-- изнчально display:none,при нажатии кнопки ставим display:block -->
-            <div class="menu-library {{btn}}">
-                <button class="menu-library__watched">WATCHED</button>
-                <button class="menu-library__queue">QUEUE</button>
-            </div>
         </div>
 
     </div>
