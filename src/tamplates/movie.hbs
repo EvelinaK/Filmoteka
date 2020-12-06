@@ -1,52 +1,50 @@
-<div class="details-film__btn-queue">
-    <a href="/" class="btn-queue">Go home</a>
-</div>
+<div class="container">
+    <div class="details-film">
+        <div class="details-film__img">
+            <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="" />
 
-<div class="details-film">
-    <div class="details-film__img">
-        <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="" />
-
-    </div>
-    <div class="details-film__text">
-        <h4 class="details-film__name">{{title}}</h4>
-        <div class="details-film__stat">
-            <div class="details-film__stat-name">
-                <p>Vote / Votes</p>
-                <p>Popularity</p>
-                <p>Original Title</p>
-                <p>Genre</p>
-            </div>
-            <div class="details-film__stat-value">
-                <div class="details-film__stat-value__vote">
-                    <div class="vote">
-                        <p class="vote-text">{{vote_average}}</p>
+        </div>
+        <div class="details-film__text">
+            <h4 class="details-film__name">{{title}}</h4>
+            <div class="details-film__stat">
+                <div class="details-film__stat-name">
+                    <p>Vote / Votes</p>
+                    <p>Popularity</p>
+                    <p>Original Title</p>
+                    <p>Genre</p>
+                </div>
+                <div class="details-film__stat-value">
+                    <div class="details-film__stat-value__vote">
+                        <div class="vote">
+                            <p class="vote-text">{{vote_average}}</p>
+                        </div>
+                        <span>/</span>
+                        <div class="votes">
+                            <p class="votes-text">{{vote_count}}</p>
+                        </div>
                     </div>
-                    <span>/</span>
-                    <div class="votes">
-                        <p class="votes-text">{{vote_count}}</p>
+                    <p>{{popularity}}</p>
+                    <p>{{original_title}}</p>
+                    <div class="ganre">
+                        {{#each genres}}
+                        <p class="details-film__info">{{name}}</p>
+                        {{/each}}
                     </div>
                 </div>
-                <p>{{popularity}}</p>
-                <p>{{original_title}}</p>
-                <div class="ganre">
-                    {{#each genres}}
-                    <p class="details-film__info">{{name}}</p>
-                    {{/each}}
+            </div>
+            <div class="details-film__about">
+                <p class="about">About</p>
+                <p class="about-text">
+                    {{overview}}
+                </p>
+            </div>
+            <div class="details-film__btn">
+                <div class="details-film__btn-watched">
+                    <button class="btn-watched"> <a href="/">add to Watched</a></button>
                 </div>
-            </div>
-        </div>
-        <div class="details-film__about">
-            <p class="about">About</p>
-            <p class="about-text">
-                {{overview}}
-            </p>
-        </div>
-        <div class="details-film__btn">
-            <div class="details-film__btn-watched">
-                <button class="btn-watched"> <a href="/">add to Watched</a></button>
-            </div>
-            <div class="details-film__btn-queue">
-                <button class="btn-queue"> <a href="/">add to queue</a></button>
+                <div class="details-film__btn-queue">
+                    <button class="btn-queue"> <a href="/">add to queue</a></button>
+                </div>
             </div>
         </div>
     </div>

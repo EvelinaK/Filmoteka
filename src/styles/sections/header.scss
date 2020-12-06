@@ -1,17 +1,21 @@
-// .cards__films-wrap,
-// .film-pagination,
-// .film-footer__section {
-//   display: none;
-// }
 .page-header {
   width: 1024px;
   height: 230px;
   margin: 0 auto;
 }
 
+.banner-effect {
+  position: absolute;
+  width: 1024px;
+  height: 230px;
+  background-color: rgba(0, 0, 0, 0.56);
+}
+
 .header-content {
   display: flex;
+  width: 100%;
   justify-content: space-between;
+  z-index: 99;
 }
 
 .banner-home {
@@ -33,9 +37,9 @@
 }
 
 .site-logo {
-  background-color: lawngreen;
-
+  height: 35px;
   margin-top: 40px;
+  z-index: 99;
 
   & svg {
     margin-right: 12px;
@@ -54,12 +58,12 @@
 }
 
 .menu-navigation {
-  background-color: indianred;
-
   width: 143px;
+  height: 16px;
   display: flex;
   justify-content: space-between;
   margin-top: 58px;
+  z-index: 99;
 
   &__item {
     position: relative;
@@ -94,6 +98,7 @@
   margin-top: 121px;
   display: flex;
   justify-content: space-between;
+  z-index: 99;
 
   &__watched,
   &__queue {
@@ -120,6 +125,7 @@
   position: relative;
   width: 336px;
   margin-top: 113px;
+  z-index: 99;
 
   &::after {
     content: '';
@@ -146,16 +152,8 @@
   }
 
   &__icon {
-    // background-color: lawngreen;
-    // display: flex;
-    // position: absolute;
     width: 16px;
     height: 16px;
-    // z-index: 9;
-    // left: 324px;
-    // top: 0px;
-    // cursor: pointer;
-    // z-index: 9;
   }
 }
 
