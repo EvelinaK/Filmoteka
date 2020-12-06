@@ -2,17 +2,25 @@ import Navigo from 'navigo';
 import RenderComponent from './Component';
 import initHomePage, {
   addEventHandlers as addHomePageEventHandlers,
+  sabmitHendler as sabmitHendler,
 } from '../pages/HomePage';
-import initLibraryPage from '../pages/LibraryPage';
+import initLibraryWatched from '../pages/LibraryWatched';
 import initMoviePage from '../pages/MoviePage';
-
+import initLibraryQueue from '../pages/LibraryQueue';
 const root = null;
-const useHash = false;
+const useHash = true;
 const router = new Navigo(root, useHash);
 
 const initRouter = () => {
   router
-    .on('/', (query) => {
+    .on(`/search`, params => {
+      console.log(params);
+      RenderComponent(initMoviePage, params).then(() => {
+        sabmitHendler();
+      });
+    })
+    .on('/', query => {
+      console.log(query);
       RenderComponent(initHomePage, query)
         .then(() => {
           addHomePageEventHandlers();
@@ -22,13 +30,13 @@ const initRouter = () => {
         });
     })
     .on('/library', () => {
-      RenderComponent(initLibraryPage);
+      RenderComponent(initLibraryQueue);
     })
     .on(`/library/queue`, () => {
-      RenderComponent();
+      RenderComponent(initLibraryQueue);
     })
     .on(`/library/watched`, () => {
-      RenderComponent();
+      RenderComponent(initLibraryWatched);
     })
     .on('/movie/:id', params => {
       RenderComponent(initMoviePage, params);

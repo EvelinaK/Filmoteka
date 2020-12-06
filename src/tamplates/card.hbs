@@ -1,12 +1,16 @@
-<section class="films__list">
-    <div class="cards__films-wrap">
+<section class="container">
+    <div class="cards-films__wrap">
         {{#each this}}
-        <a href="/movie/{{id}}" class="card__item-film">
+        <a href="/movie/{{id}}" class="card-item__film">
             <img class="card__img" src="https://image.tmdb.org/t/p/w220_and_h330_face//{{poster_path}}" width="274"
                 height="398" />
-            <h4 class="card__film-name">{{original_title}}</h4>
-            <p class="card__film-info">Drama, Action |{{release_date}}</p>
-            <span class="card__film-rating">{{vote_average}}</span>
+            <h4 class="card-film__name">{{original_title}}</h4>
+
+            {{#each genres}}
+            <p class="details-film__info">{{name}}</p>
+            {{/each}}
+            <p class="card-film__info">{{release_date}}</p>
+            <span class="card-film__rating">{{vote_average}}</span>
         </a>
         {{/each}}
     </div>

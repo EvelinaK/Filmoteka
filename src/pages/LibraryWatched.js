@@ -27,11 +27,11 @@ const init = async () => {
   const API = new MovieAPI();
 
   return await API.getPopularMovies().then(data => {
-    const { results } = data;
-    console.log(results);
+    // const { results } = data;
+    // console.log(data);
     const duffElem = document.createElement('div');
-    duffElem.insertAdjacentHTML('beforeend', Header());
-    duffElem.insertAdjacentHTML('beforeend', SectionCards(results));
+    duffElem.insertAdjacentHTML('beforeend', Header({ banner: 'watched' }));
+    duffElem.insertAdjacentHTML('beforeend', SectionCards()); //results--пебебрасываем в страницу секшн кард как параметр//
     duffElem.insertAdjacentHTML('beforeend', SectionPagination());
     duffElem.insertAdjacentHTML('beforeend', Footer());
 

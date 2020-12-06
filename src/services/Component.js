@@ -11,10 +11,12 @@ const RenderComponent = async (
 
   // Очищаем всю разметук на странице
   rootElement.innerHTML = '';
+  // query = '';
   // Вставляем новую разметку на страницу
   rootElement.insertAdjacentHTML('beforeend', template);
 
-  // Следим за кликами на ссылку, и получаем с нее атрибут href, после этого деалем навигацию по этой ссылке через роутер
+  // Следим за кликами на ссылку, и получаем с нее атрибут href,
+  // после этого деалем навигацию по этой ссылке через роутер
   document.body.addEventListener('click', event => {
     const link = event.target.closest('a');
 
