@@ -22,3 +22,5 @@ const init = async params => {
 };
 
 export default init;
+
+//--вешаем обработчик события на кнопки
