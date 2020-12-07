@@ -1,8 +1,8 @@
 <header class="page-header banner-{{banner}}">
+    <div class="banner-effect"></div>
     <div class="container">
         <div class="header-content">
             <div class="site-logo">
-                {{!-- <img class="site-logo__icon" src="../src/images/icons/film../.png" alt=""> --}}
                 <a href="#" class="site-logo__link">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -24,11 +24,16 @@
                             stroke-linejoin="round" />
                     </svg><span>Filmoteka</span> </a>
             </div>
-            <!-- изначально display:block,при нажатии кнопки ставим display:none -->
             <div class="menu-search {{form}}">
-                <input class="menu-search__films" type="text" value="" name="query" autocomplete="off"
-                    placeholder="Поиск фильмов">
-                <img class="menu-search__icon" src="../images/icons/search2.png" alt="">
+                <form class="search-form" id="search-form">
+                    <input lass="menu-search__films" type="text" name="text" autocomplete="off"
+                        placeholder="Поиск фильмов" class="search-field">
+                    <button type="submit" class="search-btn">
+                        <svg class="search-icon" width="12" height="12">
+                            <use href="../images/icons/search2.pn"></use>
+                        </svg>
+                    </button>
+                </form>
             </div>
             <ul class="menu-navigation">
                 <li class="menu-navigation__item">
@@ -38,12 +43,6 @@
                     <a href="/library" class="menu-navigation__library">MY LIBRARY</a>
                 </li>
             </ul>
-            <!-- изнчально display:none,при нажатии кнопки ставим display:block -->
-            <div class="menu-library {{btn}}">
-                <button class="menu-library__watched">WATCHED</button>
-                <button class="menu-library__queue">QUEUE</button>
-            </div>
         </div>
-
     </div>
 </header>

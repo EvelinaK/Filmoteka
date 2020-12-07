@@ -4,10 +4,11 @@ const ROOT_ELEMENT = document.querySelector('#view');
 
 const RenderComponent = async (
   renderFunction,
+  query,
   params,
   rootElement = ROOT_ELEMENT,
 ) => {
-  const template = await renderFunction(params);
+  const template = await renderFunction(query, params);
 
   // Очищаем всю разметук на странице
   rootElement.innerHTML = '';
