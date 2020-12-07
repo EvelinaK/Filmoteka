@@ -230,7 +230,7 @@
   } */
 
 /*пагинация */
-
+/* 
 .click-pag:hover {
   cursor: pointer;
 }
@@ -306,7 +306,7 @@
 
 .film-page-list .film-pag:last-child .click-pag {
   border-radius: 0 5px 5px 0;
-}
+} */
 
 /*-------------футер------------*/
 

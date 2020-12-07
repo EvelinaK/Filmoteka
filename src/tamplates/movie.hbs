@@ -5,7 +5,6 @@
 <div class="details-film">
     <div class="details-film__img">
         <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="" />
-
     </div>
     <div class="details-film__text">
         <h4 class="details-film__name">{{title}}</h4>
@@ -43,10 +42,10 @@
         </div>
         <div class="details-film__btn">
             <div class="details-film__btn-watched">
-                <button class="btn-watched"> <a href="/">add to Watched</a></button>
+                <button class="btn-watched button-action" data-name='{{id}}'> add to Watched</button>
             </div>
             <div class="details-film__btn-queue">
-                <button class="btn-queue"> <a href="/">add to queue</a></button>
+                <button class="button-action btn-queue" data-name='{{id}}'>add to queue</button>
             </div>
         </div>
     </div>

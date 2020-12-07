@@ -26,9 +26,18 @@
             </div>
             <!-- изначально display:block,при нажатии кнопки ставим display:none -->
             <div class="menu-search {{form}}">
-                <input class="menu-search__films" type="text" value="" name="query" autocomplete="off"
+                <form class="search-form" id="search-form">
+                    <input lass="menu-search__films" type="text" name="text" autocomplete="off"
+                        placeholder="Поиск фильмов" class="search-field">
+                    <button type="submit" class="search-btn">
+                        <svg class="search-icon" width="12" height="12">
+                            <use href="../images/icons/search2.pn"></use>
+                        </svg>
+                    </button>
+                </form>
+                {{!-- <input class="menu-search__films" type="text" value="" name="query" autocomplete="off"
                     placeholder="Поиск фильмов">
-                <img class="menu-search__icon" src="../images/icons/search2.png" alt="">
+                <img class="menu-search__icon" src="../images/icons/search2.png" alt=""> --}}
             </div>
             <ul class="menu-navigation">
                 <li class="menu-navigation__item">

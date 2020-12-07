@@ -1,127 +1,139 @@
-const template = page => `
+const template = (page, baseLink = '/') => `
   <li class="film-pag no page-item">
-    <a class="click-pag" href="/?page=${page}">${page}</a>
+    <a class="click-pag" href="${baseLink}?page=${page}">${page}</a>
   </li>
 `;
 
-const templateactive = page => `
+const templateButton = (page, baseLink = '/') => `
+  <li class="film-pag no page-item">
+    <a class="click-pag" href="${baseLink}?page=${page}">${page}</a>
+  </li>
+`;
+
+const templateDots = (page, baseLink = '/') => `
+  <li class="film-pag no page-item">
+    <a class="click-pag" href="${baseLink}?page=${page}">...</a>
+  </li>
+`;
+
+const templateactive = (page, baseLink = '/') => `
 <li class="film-pag no page-item active">
-  <a class="click-pag" href="/?page=${page}">${page}</a>
+  <a class="click-pag" href="${baseLink}?page=${page}">${page}</a>
 </li>
 `;
 
-const templateFitst = page => `
-  <li class="film-pag no page-item">
-    <a class="click-pag" href="/?page=${page}">${page}</a>
-  </li>
-`;
-const templateLast = page => `
-  <li class="film-pag no page-item">
-    <a class="click-pag" href="/?page=${page}">${page}</a>
-  </li>
-`;
-const templateprev = () => `
+const templatePrev = (page, baseLink = '/') => `
 <li class="film-page-item previous no">
-  <button class="click-pag" onclick="return prevClick();"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <a class="click-pag" href="${baseLink}?page=${page}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M12.6667 8H3.33334" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00001 12.6667L3.33334 8.00004L8.00001 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
-  </button>
+  </a>
 </li>
 `;
 
-const templatenext = () => `
-<li class="film-pag page-item next no">
-  <button class="click-pag" onclick="return nextClick();"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+const templateNext = (page, baseLink = '/') => `
+<li class="film-page-item next no">
+  <a class="click-pag" href="${baseLink}?page=${page}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M3.33335 8H12.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00002 12.6667L12.6667 8.00004L8.00002 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
-  </button>
+  </a>
 </li> 
 `;
+let totalPages;
+let baseLinks = '/';
+//  totalPages = totalPgs;
+// const TOTAL_PAGES = 'totalPages';
+export const startRender = (currentPage = 1, totalPgs, baseLink = '/') => {
+  console.log(baseLink);
+  //   localStorage.removeItem(TOTAL_PAGES);
+  //   localStorage.setItem(TOTAL_PAGES, totalPgs);
 
-const TOTAL_PAGES = 'totalPages';
-
-export const startRender = (currentPage = 1, totalPgs) => {
-  localStorage.removeItem(TOTAL_PAGES);
-  localStorage.setItem(TOTAL_PAGES, totalPgs);
-
-  return renderPagination(currentPage);
+  totalPages = totalPgs;
+  baseLinks = baseLink;
+  return renderPagination(currentPage, totalPages, baseLink);
 };
 
-export const renderPagination = currentPage => {
+export const renderPagination = (currentPage, totalPages, baseLink) => {
   const links = [];
-  const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
+
+  //   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
 
   let pagData = registerData(currentPage);
   console.log(JSON.stringify(pagData));
   //--функция которая сздает кнопку generatefirspageputton
-  links.push(renderPrevBtn(currentPage));
-  //--функция которая сздает кнопку generatefirspageputton
+  links.push(renderPrevBtn(currentPage, baseLink));
+  links.push(GenerateFirstBtn(pagData, baseLink));
   for (let i = 0; i < pagData.length; i++) {
     if (pagData[i] == currentPage) {
-      links.push(templateactive(pagData[i]));
+      links.push(templateactive(pagData[i], baseLink));
     } else if (pagData[i] <= totalPages) {
-      links.push(template(pagData[i]));
+      links.push(template(pagData[i], baseLink));
     }
   }
+  links.push(GenerateLastBtn(pagData, totalPages, baseLink));
   //--функция которая сздает кнопку generatefirspageputton
-  links.push(renderNextBtn(currentPage, totalPages));
+  links.push(renderNextBtn(currentPage, totalPages, baseLink));
 
   // console.log(links.join(''));
   return links.join('');
 };
 
-function prevClick(activePageID) {
-  activePageID = activePageID - 1;
-  if (activePageID < 1) {
-    activePageID = 1;
-  }
-
-  // console.log('activePageID: ' + activePageID);
-  renderPagination(activePageID);
-}
-
-function nextClick() {
-  const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
-  activePageID = activePageID + 1;
-
-  if (activePageID > totalPages) {
-    activePageID = totalPages;
-  }
-
-  // console.log('activePageID: ' + activePageID);
-  renderPagination(activePageID);
-}
-
-function renderPrevBtn(currentPage) {
+function renderPrevBtn(currentPage, baseLink) {
   let prevBtnHTML = '';
   if (currentPage > 1) {
-    prevBtnHTML = templateprev();
-    currentPage--;
+    prevBtnHTML = templatePrev(currentPage - 1, baseLink);
   }
 
   return prevBtnHTML;
 }
 
-function renderNextBtn(currentPage) {
+function renderNextBtn(currentPage, totalPages, baseLink) {
   let nextBtnHTML = '';
-  const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
+  var totalPages;
 
   if (currentPage < totalPages) {
-    nextBtnHTML = templatenext(totalPages);
-    currentPage++;
+    nextBtnHTML = templateNext(currentPage + 1, baseLink);
   }
 
   return nextBtnHTML;
 }
 
-function createRegisterArray(startIndex, maxLength) {
+function GenerateFirstBtn(pagData, baseLink) {
+  let str;
+
+  if (pagData.includes(1)) {
+    str = null;
+  } else if (pagData.includes(2)) {
+    str = templateButton(1, baseLink);
+  } else {
+    str = templateButton(1, baseLink) + templateDots(pagData[0] - 1, baseLink);
+  }
+
+  return str;
+}
+function GenerateLastBtn(pagData, totalPages, baseLink) {
+  var totalPages;
+  let str;
+  if (pagData.includes(totalPages)) {
+    str = null;
+  } else if (pagData.includes(totalPages - 1)) {
+    str = templateButton(totalPages, baseLink);
+  } else {
+    str =
+      templateDots(pagData[pagData.length - 1] + 1, baseLink) +
+      templateButton(totalPages, baseLink);
+  }
+  return str;
+}
+
+function createRegisterArray(startIndex, maxLength, totalPages) {
   let registerArray = [];
   let lastIndex = startIndex + maxLength;
 
-  const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
-
+  //   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
+  var totalPages;
   // console.log('startIndex: ' + startIndex + ', lastIndex: ' + lastIndex);
 
   let firstRegNr = startIndex + 1;
@@ -165,47 +177,6 @@ function registerData(activePageID) {
   }
 
   return pagData;
-}
-
-function addDotsBlock() {
-  const dots = document.createElement('div');
-  dots.classList.add('dots');
-  dots.innerText = '...';
-  return dots;
-}
-
-// адаптировать под себя
-
-// if (
-//   totalPages >= 6 &&
-//   i == 1 &&
-//   currentPage !== 1 &&
-//   currentPage !== 2 &&
-//   currentPage !== 3
-// ) {
-//   const threeDotsEl = addThreeDotsBlock();
-//   wrapper.insertBefore(threeDotsEl, wrapper[wrapper.length - 2]);
-// }
-
-// if (
-//   pageCount >= 7 &&
-//   i == pageCount - 1 &&
-//   currentPage !== pageCount &&
-//   currentPage !== pageCount - 2 &&
-//   currentPage !== pageCount - 1
-// ) {
-//   const threeDotsEl = addThreeDotsBlock();
-//   wrapper.insertBefore(threeDotsEl, wrapper[1]);
-// }
-debugger;
-
-//--функция которая сздает кнопку generatefirspageputton
-
-function generatefirspageputton() {
-  const dots = document.createElement('div');
-  dots.classList.add('dots');
-  dots.innerText = '...';
-  return dots;
 }
 
 // если в массиве нет 1 , то рисую кнопку и добавлчяю
