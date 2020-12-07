@@ -57,6 +57,21 @@
   color: #ff6801;
 }
 
+.card__film-rating {
+  display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  width: 36px;
+  height: 16px;
+  background: #ff6b01;
+  border-radius: 5px;
+  color: #fff;
+}
+
 @media only screen and (min-width: 250px) and (max-width: 768px) {
   .cards__films-wrap {
     display: flex;

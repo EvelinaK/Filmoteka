@@ -2,3 +2,7 @@
 @import '../sections/cards.scss';
 @import '../sections/paginations.scss';
 @import '../sections/footer.scss';
+
+.card__film-rating {
+  display: none !important;
+}
