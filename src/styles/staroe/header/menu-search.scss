@@ -1,0 +1,133 @@
+.menu-search {
+  position: absolute;
+  width: 336px;
+  left: 344px;
+  top: 113px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 19px;
+    height: 1px;
+    background-color: white;
+    z-index: 7;
+  }
+
+  &: __films {
+    position: absolute;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    width: 322px;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 12;
+  }
+  &: __icon {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 324px;
+    top: 0px;
+    cursor: pointer;
+    z-index: 9;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-search {
+    left: 216px;
+  }
+}
+@media (max-width: 320px) {
+  .menu-search {
+    width: 280px;
+    left: 20px;
+
+    &: __films {
+      width: 266px;
+    }
+    &: __icon {
+      left: 268px;
+      top: 2px;
+    }
+  }
+}
+
+.search-form {
+  position: relative;
+  text-align: center;
+}
+
+.search-field {
+  width: 100%;
+
+  font-size: 14px;
+  line-height: 1.14;
+
+  @media screen and (min-width: $tablet) {
+    width: 336px;
+  }
+
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 1px solid $white;
+
+  font-family: $mainFont;
+
+  color: $white;
+
+  @include transition(border-bottom);
+
+  &::placeholder {
+    color: $white;
+
+    @include transition(color);
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $accentColor;
+
+    &::placeholder {
+      color: $accentColor;
+    }
+  }
+}
+
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  @media screen and (min-width: $tablet) {
+    right: 142px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    right: 273px;
+  }
+
+  padding: 0;
+
+  background-color: transparent;
+  border: transparent;
+
+  color: $white;
+
+  @include transition(color);
+
+  .search-field:focus ~ & {
+    color: $accentColor;
+  }
+}
