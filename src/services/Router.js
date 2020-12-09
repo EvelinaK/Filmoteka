@@ -2,6 +2,7 @@ import Navigo from 'navigo';
 import RenderComponent from './Component';
 import initHomePage, {
   addEventHandlers as addHomePageEventHandlers,
+<<<<<<< HEAD
   submitHandler as submitHandler,
 } from '../pages/HomePage';
 import initLibraryWatched from '../pages/LibraryWatched';
@@ -101,6 +102,42 @@ const initRouter = () => {
 
 // export const navigate = path => {
 //   router.navigate(path);
+=======
+} from '../pages/HomePage';
+import initLibraryPage from '../pages/LibraryPage';
+
+const rootUrl = `${window.location.protocol}//${window.location.host}`;
+const root = null;
+const useHash = true;
+const hash = '#!';
+const router = new Navigo(root, useHash, hash);
+// const router = new Navigo(root);
+
+const initRouter = () => {
+  router
+    .on('/', () => {
+      //.on(rootUrl, () => {
+      RenderComponent(initHomePage)
+        .then(() => {
+          addHomePageEventHandlers();
+        })
+        .finally(() => {
+          console.log('Home page is rendered');
+        });
+    })
+    .on(`/library`, () => {
+      //.on(rootUrl + `/library`, () => {
+      //${rootUrl}
+      RenderComponent(initLibraryPage);
+    })
+    .resolve();
+};
+export const navigate = path => {
+  router.navigate(path);
+};
+// export const navigate = path => {
+//   router.navigate(rootUrl + path);
+>>>>>>> 900e5419392afb302609ee05a839b04ad9912570
 // };
 
 export default initRouter;

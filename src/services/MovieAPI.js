@@ -12,6 +12,7 @@ export default class MovieAPI {
     this.page = 1;
   }
 
+<<<<<<< HEAD
   getPopularMovies(page) {
     return fetch(
       `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`,
@@ -118,6 +119,20 @@ export default class MovieAPI {
   //   });
   // }
 
+=======
+  getPopularMovies() {
+    return fetch(
+      `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.page}`,
+    ).then(res => res.json());
+  }
+
+  getMoviesByQuery() {
+    return fetch(
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`,
+    ).then(res => res.json());
+  }
+
+>>>>>>> 900e5419392afb302609ee05a839b04ad9912570
   get SearchQuery() {
     return this.searchQuery;
   }
