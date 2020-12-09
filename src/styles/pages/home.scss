@@ -2,8 +2,3 @@
 @import '../sections/cards.scss';
 @import '../sections/paginations.scss';
 @import '../sections/footer.scss';
-
-// перебивает стили карточек (убирает рейтинг с показа)
-.raiting {
-  display: none;
-}

@@ -15,7 +15,11 @@ export default class MovieAPI {
   getPopularMovies(page) {
     return fetch(
       `${BASE_URL}/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`,
-    ).then(res => res.json());
+    )
+      .then(res => res.json())
+      .then(data => {
+        return data;
+      });
   }
   getTrendingMovies() {
     return fetch(
@@ -23,9 +27,9 @@ export default class MovieAPI {
     ).then(res => res.json());
   }
 
-  getMoviesByQuery(qwery, page) {
+  getMoviesByQuery(searchQuery, page = 1) {
     return fetch(
-      `${BASE_URL}/3/search/movie?api_key=${API_KEY}&query=${this.searchQuery}&language=en-US&page=${this.page}`,
+      `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&page=${page}&query=${searchQuery}`,
     ).then(res => res.json());
   }
 
@@ -34,6 +38,85 @@ export default class MovieAPI {
       `${BASE_URL}/3/movie/${movieid}?api_key=${API_KEY}&language=en-US`,
     ).then(res => res.json());
   }
+  getGenres() {
+    return fetch(
+      `${BASE_URL}/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
+    )
+      .then(response => response.json())
+      .then(data => {
+        return data.genres;
+      });
+  }
+
+  async insertGenresToMovieObj() {
+    const genreList = await this.fetchGenres();
+    this.getPopularMovies().then(datas => {
+      let data = Object.assign({}, datas);
+      data.results.forEach(result => {
+        Object.defineProperty(result, 'genreNames', {
+          value: {},
+        });
+
+        result.genre_ids.forEach(genreId => {
+          Object.defineProperty(result.genreNames, String(genreId), {
+            writable: true,
+          });
+          result.genreNames[genreId] = genreList.find(
+            genre => genre.id == genreId,
+          ).name;
+          console.log(result.genreNames);
+        });
+      });
+      console.log(data.results);
+      // genreList.map(genre => ({
+      //   release_date: genre.release_date.split('-')[0],
+      //   genres: genre.genre_ids
+      //     .map(id => genresList.filter(el => el.id === id))
+      //     .flat(),
+      // }));
+    });
+  }
+
+  // async insertGenresToMovieObj() {
+  //   const genreList = await this.fetchGenres();
+  //   this.getPopularMovies().then(data => {
+  //     data.results.forEach(result => {
+  //       Object.defineProperty(result, 'genreNames', {
+  //         value: {},
+  //       });
+
+  //       result.genre_ids.forEach(genreId => {
+  //         Object.defineProperty(result.genreNames, String(genreId), {
+  //           writable: true,
+  //         });
+  //         result.genreNames[genreId] = genreList.find(
+  //           genre => genre.id == genreId,
+  //         ).name;
+  //         console.log(result.genreNames);
+  //       });
+  //     });
+  //     console.log(data.results);
+  //   });
+  // }
+
+  // insertGenresToSearchObj() {
+  //   return this.fetchSearchArticles().then(data => {
+  //     return this.fetchGenres().then(genresList => {
+  //       let release_date;
+  //       return data.map(movie => ({
+  //         ...movie,
+  //         release_date: movie.release_date
+  //           ? movie.release_date.split('-')[0]
+  //           : 'n/a',
+  //         genres: movie.genre_ids
+  //           ? movie.genre_ids
+  //               .map(id => genresList.filter(el => el.id === id))
+  //               .flat()
+  //           : 'n/a',
+  //       }));
+  //     });
+  //   });
+  // }
 
   get SearchQuery() {
     return this.searchQuery;

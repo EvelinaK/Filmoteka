@@ -25,24 +25,15 @@
                     </svg><span>Filmoteka</span> </a>
             </div>
             <div class="menu-search {{form}}">
-                <input class="menu-search__films" type="text" value="" name="query" autocomplete="off"
-                    placeholder="Поиск фильмов">
-                {{!-- <img class="menu-search__icon" src="../images/icons/search2.png" alt=""> --}}
-                <a href="#" class="menu-search__icon">
-                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M4.5 8.5C6.70914 8.5 8.5 6.70914 8.5 4.5C8.5 2.29086 6.70914 0.5 4.5 0.5C2.29086 0.5 0.5 2.29086 0.5 4.5C0.5 6.70914 2.29086 8.5 4.5 8.5Z"
-                            stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3.49995 3.49995L1.32495 1.32495" stroke="white" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-            </div>
-            <div class="menu-library {{btn}}">
-                <button class="menu-library__watched">WATCHED</button>
-                <button class="menu-library__queue">QUEUE</button>
+                <form class="search-form" id="search-form">
+                    <input lass="menu-search__films" type="text" name="text" autocomplete="off"
+                        placeholder="Поиск фильмов" class="search-field">
+                    <button type="submit" class="search-btn">
+                        <svg class="search-icon" width="12" height="12">
+                            <use href="../images/icons/search2.pn"></use>
+                        </svg>
+                    </button>
+                </form>
             </div>
             <ul class="menu-navigation">
                 <li class="menu-navigation__item">
@@ -53,6 +44,5 @@
                 </li>
             </ul>
         </div>
-
     </div>
 </header>

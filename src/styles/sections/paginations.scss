@@ -1,0 +1,309 @@
+.click-pag:hover {
+  cursor: pointer;
+}
+
+#film-pagination {
+  display: flex;
+  height: auto;
+  padding-top: 46px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.film-control {
+  margin-top: 12px;
+  background-color: white;
+}
+
+.film-page-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 374px;
+  height: 40px;
+  line-height: 25px;
+}
+
+.click-pag-r {
+  text-align: center;
+  line-height: 2;
+}
+@media only screen and (min-width: 250px) and (max-width: 767px) {
+  .film-page-list {
+    display: flex;
+    justify-content: center;
+    width: 280px;
+    height: 40px;
+  }
+  .out-of-range {
+    display: none;
+  }
+}
+
+.page-item {
+  color: #fff;
+  display: flex;
+}
+.film-page-list .page-item > .click-pag {
+  background-color: #fff;
+  line-height: 42px;
+  text-align: center;
+  color: black;
+
+  border: none;
+  border-right: 0;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  height: 40px;
+  width: 33.4px;
+}
+.film-page-list .film-pag.active > .click-pag {
+  background-color: #ff6b08;
+  color: white;
+  border-radius: 15%;
+  width: 40px;
+}
+
+.film-page-list .film-pag:first-child .click-pag {
+  border-radius: 5px 0 0 5px;
+}
+
+.film-page-list .film-pag:last-child .click-pag {
+  border-radius: 0 5px 5px 0;
+}
+
+//
+// $border-color: #3d315b;
+// $list-background-color: white;
+// $active-list-background-color: #ff6b08;
+// $border-radius: 5px;
+
+// * {
+//   font-family: 'Poppins';
+// }
+// body {
+//   background-color: white;
+//   margin: 0;
+// }
+// .click-pag:hover {
+//   cursor: pointer;
+// }
+// #film-pagination {
+//   display: flex;
+//   height: auto;
+//   padding-top: 46px;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+// }
+// .film-page-list {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+//   display: flex;
+//   width: 374px;
+//   height: 40px;
+//   line-height: 25px;
+//   .film-page-item {
+//     color: #fff;
+//     display: flex;
+//     a {
+//       background-color: #444b6e;
+//       padding: 5px 10px;
+//       border: 2px solid $border-color;
+//       border-right: 0;
+//     }
+//   }
+
+//   @media only screen and (min-width: 250px) and (max-width: 767px) {
+//     .film-page-list {
+//       display: flex;
+//       justify-content: center;
+//       width: 280px;
+//       height: 40px;
+//     }
+//     .out-of-range {
+//       display: none;
+//     }
+//   }
+//   // li.previous,
+//   // li.next {
+//   //   animation: fadein .5s;
+//   // }
+//   .film-page-item.active a {
+//     background-color: $active-list-background-color;
+//   }
+//   .film-page-item:first-child a {
+//     // border-radius: $border-radius 0 0 $border-radius;
+//     border-radius: 5px 0 0 5px;
+//   }
+//   .film-page-item:last-child a {
+//     // border-radius: 0 $border-radius $border-radius 0;
+//     border-radius: 5px 0 0 5px;
+//     border-right: 2px solid $border-color;
+//   }
+// }
+
+// When I feel motivated to get this working
+// @keyframes fadein {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+// .film-pagination {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-bottom: 60px;
+//   height: auto;
+//   padding-top: 46px;
+//   justify-content: center;
+
+//   .list {
+//     width: 100%;
+//     max-width: 768px;
+//     background-color: #fff;
+//     margin-top: 25px;
+//   }
+
+//   .list .item {
+//     padding: 15px;
+//   }
+
+//   .list .item:hover {
+//     background-color: rgb(0, 0, 0, 0.05);
+//   }
+// }
+
+// .pagenumbers {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+
+//   button {
+//     width: 40px;
+//     height: 40px;
+
+//     appearance: none;
+//     border: none;
+//     outline: none;
+//     cursor: pointer;
+//     margin: 5px;
+
+//     transition: 0.5s;
+//     color: #000000;
+
+//     font-family: 'Roboto', sans-serif;
+//     font-weight: 500;
+//     font-size: 12px;
+//     line-height: 1.33;
+//     font-style: normal;
+//     background-color: #fff;
+//   }
+
+//   button:hover {
+//     background-color: #ff6b08;
+//     color: #ffffff;
+//     border-radius: 5px;
+//   }
+
+//   button.active {
+//     background-color: #ff6b08;
+//     color: #ffffff;
+//     border-radius: 5px;
+//   }
+// }
+
+// @media screen and (max-width: 400px) {
+//   .pagenumbers button {
+//     width: 38px;
+//     height: 38px;
+//     margin: 3px;
+//   }
+// }
+
+// @media screen and (max-width: 320px) {
+//   .pagenumbers button {
+//     width: 35px;
+//     height: 35px;
+//     margin: 1px;
+//   }
+// }
+
+// .arrow_left {
+//   background-image: url('../../src/images/pagination/arrow-left.svg');
+//   background-repeat: no-repeat;
+// }
+
+// .arrow_right {
+//   background-image: url('../../src/images/pagination/arrow-right.svg');
+//   background-repeat: no-repeat;
+// }
+
+// .pagination__container_pages {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .pag-arrow {
+//   width: 40px;
+//   height: 40px;
+//   margin: 5px;
+//   background-position: center;
+//   border: none;
+//   background-color: #fff;
+//   transition: background-color 0.25s ease-in;
+//   border-radius: 5px;
+
+//   &:hover {
+//     background-color: #ff6b08;
+//     color: #ffffff;
+//     border-radius: 5px;
+//   }
+
+//   &:active {
+//     background-color: green;
+//   }
+// }
+
+// .threeDots {
+//   display: flex;
+//   width: 40px;
+//   height: 40px;
+//   margin: 5px;
+
+//   border: none;
+//   background-color: #fff;
+//   display: inline-block;
+//   text-align: center;
+//   padding: 10px 5px 1px 5px;
+// }
+
+// @media screen and (max-width: 767px) {
+//   .threeDots {
+//     display: none;
+//   }
+// }
+
+// @media screen and (min-width: 768px) {
+//   .threeDots {
+//     display: inline-block;
+//   }
+// }
+
+// .hide {
+//   display: none;
+// }
+
+// .disabled-arrow {
+//   pointer-events: none;
+//   background-color: #c4c0c0;
+// }
