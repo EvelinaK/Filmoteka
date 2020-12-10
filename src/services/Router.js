@@ -10,7 +10,7 @@ import initLibraryQueue from '../pages/LibraryQueue';
 import initSearch from '../pages/SearchPage';
 
 const root = null;
-const useHash = true;
+const useHash = false;
 const hash = '#';
 //--или true ???
 const router = new Navigo(root, useHash);
