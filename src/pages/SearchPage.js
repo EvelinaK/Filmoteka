@@ -13,8 +13,14 @@ const init = async (query, params = 'q=&page=1') => {
   const data = await API.getMoviesByQuery(
     queryParams.get('q'),
     queryParams.get('page'),
+<<<<<<< HEAD
   );
   console.log(params);
+=======
+    //-нужно получать и передавать
+  );
+
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
   const root = document.createElement('div');
 
   root.insertAdjacentHTML(
@@ -22,6 +28,7 @@ const init = async (query, params = 'q=&page=1') => {
     Header({ banner: 'home', btn: 'off', form: 'on' }),
   );
   root.insertAdjacentHTML('beforeend', SectionCards(data.results));
+<<<<<<< HEAD
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
@@ -31,6 +38,13 @@ const init = async (query, params = 'q=&page=1') => {
         '/search',
         `&q=${queryParams.get('q')}`,
       ),
+=======
+
+  root.insertAdjacentHTML(
+    'beforeend',
+    SectionPagination({
+      paginations: startRender(data.page, data.total_pages, '/search'),
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
     }),
   );
   root.insertAdjacentHTML('beforeend', Footer());
@@ -38,8 +52,16 @@ const init = async (query, params = 'q=&page=1') => {
   return root.innerHTML;
 };
 
+<<<<<<< HEAD
 export default init;
 
+=======
+// Other functions
+
+export default init;
+
+//{{#each genres}}{{name}}{{#if @last}}{{else}}, {{/if}}{{/each}} |
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
 export const addEventHandlers = () => {
   document
     .querySelector('#search-form')

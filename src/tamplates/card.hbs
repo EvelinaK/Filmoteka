@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section class="container">
     <div class="cards-films__wrap">
         {{#each this}}
@@ -8,8 +9,34 @@
             <div class="card-film__details">
                 <p class="card-film__info">{{genre}} | {{release_date}}</p>
                 <span class="card-film__rating">{{vote_average}}</span>
+=======
+<<<<<<< HEAD
+<section class="container">
+    <div class="cards__films-wrap">
+        {{#each this}}
+        <a href="/movie/{{id}}" class="card__item-film">
+            <img class="card__img" src="https://image.tmdb.org/t/p/w220_and_h330_face//{{poster_path}}" width="274"
+                height="398" />
+            <h4 class="card__film-name">{{original_title}}</h4>
+            <div class="card-film__details">
+                <p class="card__film-info">{{genre}} | {{release_date}}</p>
+                <span class="card__film-rating">{{vote_average}}</span>
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
             </div>
         </a>
         {{/each}}
     </div>
+<<<<<<< HEAD
 </section>
+=======
+</section>
+=======
+<div class="card__item-film">
+    <img class="card__img" src="https://image.tmdb.org/t/p/w220_and_h330_face//{{poster_path}}" width="274"
+        height="398" />
+    <h4 class="card__film-name">{{original_title}}</h4>
+    <p class="card__film-info">Drama, Action | 2020</p>
+    <span class="card__film-rating">10.0</span>
+</div>
+>>>>>>> 900e5419392afb302609ee05a839b04ad9912570
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6

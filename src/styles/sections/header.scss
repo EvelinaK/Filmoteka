@@ -130,7 +130,11 @@
   &::after {
     content: '';
     position: absolute;
+<<<<<<< HEAD
     top: 17px;
+=======
+    top: 20px;
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
     width: 100%;
     height: 1px;
     background-color: white;
@@ -139,10 +143,16 @@
   &__films {
     font-family: Roboto;
     font-weight: normal;
+<<<<<<< HEAD
     width: 322px;
     font-size: 14px;
     line-height: 16px;
     display: flex;
+=======
+    width: 320px;
+    font-size: 14px;
+    line-height: 16px;
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
     align-items: center;
     color: #ffffff;
     border: none;
@@ -156,6 +166,19 @@
     height: 16px;
   }
 }
+<<<<<<< HEAD
+=======
+.search-btn {
+  color: #ffffff;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+.search-svg {
+line-height: 20px;
+}
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
 
 // для смены кнопок на страницах. не удалять
 .on {
@@ -166,6 +189,7 @@
   display: none;
 }
 // для смены кнопок на страницах. не удалять
+<<<<<<< HEAD
 
 @media only screen and (min-width: 250px) and (max-width: 768px) {
   #wrapper {
@@ -234,3 +258,5 @@
     background-image: url(../images/banner-detalis320.png);
   }
 }
+=======
+>>>>>>> fdd83d3ed8cef33da5a2d8cbddec88b68b7ef3f6
