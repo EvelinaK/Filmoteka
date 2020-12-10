@@ -13,7 +13,6 @@ const init = async (query, params = 'q=&page=1') => {
   const data = await API.getMoviesByQuery(
     queryParams.get('q'),
     queryParams.get('page'),
-    //-нужно получать и передавать
   );
 
   const root = document.createElement('div');
@@ -23,7 +22,6 @@ const init = async (query, params = 'q=&page=1') => {
     Header({ banner: 'home', btn: 'off', form: 'on' }),
   );
   root.insertAdjacentHTML('beforeend', SectionCards(data.results));
-
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
@@ -35,11 +33,8 @@ const init = async (query, params = 'q=&page=1') => {
   return root.innerHTML;
 };
 
-// Other functions
-
 export default init;
 
-//{{#each genres}}{{name}}{{#if @last}}{{else}}, {{/if}}{{/each}} |
 export const addEventHandlers = () => {
   document
     .querySelector('#search-form')

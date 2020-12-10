@@ -7,17 +7,13 @@ import Footer from '../tamplates/footer.hbs';
 import { startRender } from '../components/pagination';
 
 const init = async (query = 'page=1') => {
-  // const init = async (query, page) => {
-  // const API = new MovieAPI();
   const APi = new MovieAPI();
   const queryParams = new URLSearchParams(query);
   const data = await APi.getPopularMovies(queryParams.get('page'));
   const ganres = await APi.getGenres();
-  console.log(ganres);
   const ganreById = ganres.reduce((acc, item) => {
     return { ...acc, [item.id]: item.name };
   }, {});
-  console.log(ganreById);
   const films = data.results.map(item => {
     return {
       ...item,
@@ -25,14 +21,7 @@ const init = async (query = 'page=1') => {
       genre: item.genre_ids.map(item => ganreById[item]),
     };
   });
-  // ---новая работа с апи
-  // const Params = new URLSearchParams(query);
-  // const dat = await API.insertGenresToMovieObj(Params.get('page'));
-  // console.log(dat);
 
-  // const queryParams = new URLSearchParams(query);
-  // const data = await API.getPopularMovies(queryParams.get('page'));
-  // console.log(data);
   const root = document.createElement('div');
 
   root.insertAdjacentHTML(
@@ -40,7 +29,6 @@ const init = async (query = 'page=1') => {
     Header({ banner: 'home', btn: 'off', form: 'on' }),
   );
   root.insertAdjacentHTML('beforeend', SectionCards(films));
-
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
@@ -56,7 +44,6 @@ const init = async (query = 'page=1') => {
 
 export default init;
 
-//{{#each genres}}{{name}}{{#if @last}}{{else}}, {{/if}}{{/each}} |
 export const addEventHandlers = () => {
   document
     .querySelector('#search-form')
