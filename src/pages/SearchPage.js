@@ -15,7 +15,7 @@ const init = async (query, params = 'q=&page=1') => {
     queryParams.get('page'),
     //-нужно получать и передавать
   );
-
+  console.log(params);
   const root = document.createElement('div');
 
   root.insertAdjacentHTML(
@@ -27,7 +27,12 @@ const init = async (query, params = 'q=&page=1') => {
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
-      paginations: startRender(data.page, data.total_pages, '/search'),
+      paginations: startRender(
+        data.page,
+        data.total_pages,
+        '/search',
+        `&q=${queryParams.get('q')}`,
+      ),
     }),
   );
   root.insertAdjacentHTML('beforeend', Footer());
