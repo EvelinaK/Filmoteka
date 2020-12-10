@@ -56,7 +56,6 @@ const init = async (query = 'page=1') => {
 
 export default init;
 
-//{{#each genres}}{{name}}{{#if @last}}{{else}}, {{/if}}{{/each}} |
 export const addEventHandlers = () => {
   document
     .querySelector('#search-form')
