@@ -23,7 +23,7 @@ const templateactive = (page, baseLink = '/', query) => `
 `;
 
 const templatePrev = (page, baseLink = '/', query) => `
-<li class="film-page-item previous no">
+<li class="film-pag page-item previous no">
   <a class="click-pag" href="${baseLink}?page=${page}${query}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M12.6667 8H3.33334" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00001 12.6667L3.33334 8.00004L8.00001 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -33,7 +33,7 @@ const templatePrev = (page, baseLink = '/', query) => `
 `;
 
 const templateNext = (page, baseLink = '/', query) => `
-<li class="film-page-item next no">
+<li class="film-pag page-item next no">
   <a class="click-pag" href="${baseLink}?page=${page}${query}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M3.33335 8H12.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00002 12.6667L12.6667 8.00004L8.00002 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -64,7 +64,6 @@ export const startRender = (
 export const renderPagination = (currentPage, totalPages, baseLink, query) => {
   const links = [];
   const isMobile = () => {
-    debugger;
     // return setTimeout(window.screen.width <= 320, 300);
     return document.body.clientWidth <= 320;
   };

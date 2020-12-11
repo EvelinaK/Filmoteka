@@ -46,35 +46,64 @@
   color: #fff;
   display: flex;
 }
+
 .film-page-list .page-item > .click-pag {
   background-color: #fff;
   line-height: 42px;
   text-align: center;
   color: black;
-
   border: none;
   border-right: 0;
   font-size: 12px;
   font-family: 'Roboto', sans-serif;
   height: 40px;
   width: 33.4px;
+  width: 40px;
+  margin: 2px;
+
+  &:hover {
+    background-color: #ff6b08;
+    color: #ffffff;
+    border-radius: 10%;
+    width: 40px;
+  }
 }
+
 .film-page-list .film-pag.active > .click-pag {
   background-color: #ff6b08;
   color: white;
-  border-radius: 15%;
+  border-radius: 10%;
   width: 40px;
 }
 
-.film-page-list .film-pag:first-child .click-pag {
+.film-page-list .page-item.film-pag:first-child .click-pag {
   border-radius: 5px 0 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
+  &:hover {
+    background-color: #d8d5d5;
+    color: #ffffff;
+    border-radius: 10%;
+    width: 40px;
+  }
 }
 
-.film-page-list .film-pag:last-child .click-pag {
+.film-page-list .page-item.film-pag:last-child .click-pag {
   border-radius: 0 5px 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+  &:hover {
+    background-color: #d8d5d5;
+    color: #f1f0f0;
+    border-radius: 10%;
+    width: 40px;
+  }
 }
 
-//
 // $border-color: #3d315b;
 // $list-background-color: white;
 // $active-list-background-color: #ff6b08;
