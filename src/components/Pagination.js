@@ -63,14 +63,21 @@ export const startRender = (
 
 export const renderPagination = (currentPage, totalPages, baseLink, query) => {
   const links = [];
-
+  const isMobile = () => {
+    debugger;
+    // return setTimeout(window.screen.width <= 320, 300);
+    return document.body.clientWidth <= 320;
+  };
   //   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
 
   let pagData = registerData(currentPage);
   console.log(JSON.stringify(pagData));
   //--функция которая сздает кнопку generatefirspageputton
   links.push(renderPrevBtn(currentPage, baseLink, query));
-  links.push(GenerateFirstBtn(pagData, baseLink, query));
+
+  if (!isMobile()) {
+    links.push(GenerateFirstBtn(pagData, baseLink, query));
+  }
   for (let i = 0; i < pagData.length; i++) {
     if (pagData[i] == currentPage) {
       links.push(templateactive(pagData[i], baseLink, query));
@@ -78,11 +85,12 @@ export const renderPagination = (currentPage, totalPages, baseLink, query) => {
       links.push(template(pagData[i], baseLink, query));
     }
   }
-  links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
+  if (!isMobile()) {
+    links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
+  }
   //--функция которая сздает кнопку generatefirspageputton
   links.push(renderNextBtn(currentPage, totalPages, baseLink, query));
 
-  // console.log(links.join(''));
   return links.join('');
 };
 
@@ -140,9 +148,7 @@ function createRegisterArray(startIndex, maxLength, totalPages) {
   let registerArray = [];
   let lastIndex = startIndex + maxLength;
 
-  //   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
   var totalPages;
-  // console.log('startIndex: ' + startIndex + ', lastIndex: ' + lastIndex);
 
   let firstRegNr = startIndex + 1;
   let lastRegNr = firstRegNr + maxLength;
@@ -160,14 +166,6 @@ function createRegisterArray(startIndex, maxLength, totalPages) {
     }
   }
 
-  // console.log(
-  //   'firstRegNr: ' +
-  //     firstRegNr +
-  //     ', lastRegNr: ' +
-  //     lastRegNr +
-  //     ', diff: ' +
-  //     diff,
-  // );
   for (let i = firstRegNr; i < lastRegNr; i++) {
     registerArray.push(i); //store register number (starts with 1);
   }
@@ -180,8 +178,8 @@ function registerData(activePageID) {
   if (activePageID < 4) {
     pagData = createRegisterArray(0, 5);
   } else {
-    let startIndex = activePageID - 4;
-    pagData = createRegisterArray(startIndex, 7);
+    let startIndex = activePageID - 3;
+    pagData = createRegisterArray(startIndex, 5);
   }
 
   return pagData;
