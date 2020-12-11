@@ -11,4 +11,3 @@ const addFilmToWatch = id => {
 //   LocalStorageApi.set('watch', id);
 // }
 
-export default addFilmToWatch;
