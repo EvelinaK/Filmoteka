@@ -1,28 +1,24 @@
-const template = (page, baseLink = '/', query) => `
+import placeholder from './spinner';
+
+const templateButton = (page, baseLink, query) => `
   <li class="film-pag no page-item">
     <a class="click-pag" href="${baseLink}?page=${page}${query}">${page}</a>
   </li>
 `;
 
-const templateButton = (page, baseLink = '/', query) => `
-  <li class="film-pag no page-item">
-    <a class="click-pag" href="${baseLink}?page=${page}${query}">${page}</a>
-  </li>
-`;
-
-const templateDots = (page, baseLink = '/', query) => `
+const templateDots = (page, baseLink, query) => `
   <li class="film-pag no page-item">
     <a class="click-pag" href="${baseLink}?page=${page}${query}">...</a>
   </li>
 `;
 
-const templateactive = (page, baseLink = '/', query) => `
+const templateactive = (page, baseLink, query) => `
 <li class="film-pag no page-item active">
   <a class="click-pag" href="${baseLink}?page=${page}${query}">${page}</a>
 </li>
 `;
 
-const templatePrev = (page, baseLink = '/', query) => `
+const templatePrev = (page, baseLink, query) => `
 <li class="film-pag page-item previous no">
   <a class="click-pag" href="${baseLink}?page=${page}${query}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M12.6667 8H3.33334" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -32,7 +28,7 @@ const templatePrev = (page, baseLink = '/', query) => `
 </li>
 `;
 
-const templateNext = (page, baseLink = '/', query) => `
+const templateNext = (page, baseLink, query) => `
 <li class="film-pag page-item next no">
   <a class="click-pag" href="${baseLink}?page=${page}${query}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M3.33335 8H12.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -41,28 +37,36 @@ const templateNext = (page, baseLink = '/', query) => `
   </a>
 </li> 
 `;
-let totalPages;
-let baseLinks = '/';
+// let totalPages;
+// let baseLinks = '/';
 
 //  totalPages = totalPgs;
 // const TOTAL_PAGES = 'totalPages';
-export const startRender = (
-  currentPage = 1,
-  totalPgs,
+// export const startRender = (
+//   currentPage = 1,
+//   totalPgs,
+//   baseLink = '/',
+//   query = '',
+// ) => {
+//   console.log(baseLink);
+//   //   localStorage.removeItem(TOTAL_PAGES);
+//   //   localStorage.setItem(TOTAL_PAGES, totalPgs);
+
+//   totalPages = totalPgs;
+//   baseLinks = baseLink;
+//   return renderPagination(currentPage, totalPages, baseLink, query);
+// };
+
+export const renderPagination = (
+  currentPage,
+  totalPages,
   baseLink = '/',
   query = '',
 ) => {
-  console.log(baseLink);
-  //   localStorage.removeItem(TOTAL_PAGES);
-  //   localStorage.setItem(TOTAL_PAGES, totalPgs);
-
-  totalPages = totalPgs;
-  baseLinks = baseLink;
-  return renderPagination(currentPage, totalPages, baseLink, query);
-};
-
-export const renderPagination = (currentPage, totalPages, baseLink, query) => {
   const links = [];
+  /////////////
+  // baseLink = '/#';
+  ////////
   const isMobile = () => {
     // return setTimeout(window.screen.width <= 320, 300);
     return document.body.clientWidth <= 320;
@@ -77,13 +81,15 @@ export const renderPagination = (currentPage, totalPages, baseLink, query) => {
   if (!isMobile()) {
     links.push(GenerateFirstBtn(pagData, baseLink, query));
   }
+  debugger;
   for (let i = 0; i < pagData.length; i++) {
     if (pagData[i] == currentPage) {
       links.push(templateactive(pagData[i], baseLink, query));
     } else if (pagData[i] <= totalPages) {
-      links.push(template(pagData[i], baseLink, query));
+      links.push(templateButton(pagData[i], baseLink, query));
     }
   }
+  debugger;
   if (!isMobile()) {
     links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
   }

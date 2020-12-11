@@ -4,9 +4,15 @@ import Header from '../tamplates/header.hbs';
 import SectionCards from '../tamplates/card.hbs';
 import SectionPagination from '../tamplates/pagination.hbs';
 import Footer from '../tamplates/footer.hbs';
-import { startRender } from '../components/pagination';
+import { renderPagination } from '../components/pagination';
+import localStorage from '../services/LocalStorage';
+import placeholder from '../components/spinner';
 
 const init = async (query = 'page=1') => {
+  if (query === '') {
+    query = 'page=1';
+  }
+  debugger;
   const APi = new MovieAPI();
   const queryParams = new URLSearchParams(query);
   const data = await APi.getPopularMovies(queryParams.get('page'));
@@ -32,7 +38,7 @@ const init = async (query = 'page=1') => {
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
-      paginations: startRender(data.page, data.total_pages, '/'),
+      paginations: renderPagination(data.page, data.total_pages, '/'),
     }),
   );
   root.insertAdjacentHTML('beforeend', Footer());
@@ -48,6 +54,8 @@ export const addEventHandlers = () => {
   document
     .querySelector('#search-form')
     .addEventListener('submit', submitHendler);
+
+  // document.querySelector('click-pag').addEventListener('click', ClickHendler);
 };
 
 const submitHendler = async event => {
@@ -56,3 +64,11 @@ const submitHendler = async event => {
 
   navigate(`/search?q=${query}`);
 };
+
+// const ClickHendler = async event => {
+//   event.preventDefault();
+//   const clickNav = event.target.querySelector('click-pag');
+//   placeholder.spinner.show();
+//   // window.scrollTo({ top: 0, behavior: 'smooth' });
+//   // navigate(`/search?q=${query}`);
+// };

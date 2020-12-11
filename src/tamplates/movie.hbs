@@ -1,9 +1,10 @@
 <div class="container">
-    <div class="details-film">
+    <div class="details-film" data-filmID='{{id}}'>
         <div class="details-film__img">
             <img src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="" />
         </div>
         <div class="details-film__text">
+            <button class="back-home">назад</button>
             <h4 class="details-film__name">{{title}}</h4>
             <div class="details-film__stat">
                 <div class="details-film__stat-name">
@@ -39,10 +40,12 @@
             </div>
             <div class="details-film__btn">
                 <div class="details-film__btn-watched">
-                    <button class="btn-watched" data-name='{{id}}'> add to Watched</button>
+                    <button id="action__watched" class="btn-watched" data-name='{{id}}' data-lsKeys='watchedKey'> add to
+                        Watched</button>
                 </div>
                 <div class="details-film__btn-queue">
-                    <button class="btn-queue" data-name='{{id}}'>add to queue</button>
+                    <button id="action__queue" class="btn-queue" data-name='{{id}}' data-lsKeys='queueKey'>add to
+                        queue</button>
                 </div>
             </div>
         </div>

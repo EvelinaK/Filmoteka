@@ -4,7 +4,7 @@ import Header from '../tamplates/header.hbs';
 import SectionCards from '../tamplates/card.hbs';
 import SectionPagination from '../tamplates/pagination.hbs';
 import Footer from '../tamplates/footer.hbs';
-import { startRender } from '../components/pagination';
+import { renderPagination } from '../components/pagination';
 
 const init = async (query, params = 'q=&page=1') => {
   const API = new MovieAPI();
@@ -25,7 +25,7 @@ const init = async (query, params = 'q=&page=1') => {
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
-      paginations: startRender(
+      paginations: renderPagination(
         data.page,
         data.total_pages,
         '/search',

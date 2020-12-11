@@ -13,9 +13,9 @@ import initSearch, {
 } from '../pages/SearchPage';
 
 const root = null;
-const useHash = false;
+const useHash = true;
 const hash = '#';
-//--или true ???
+
 const router = new Navigo(root, useHash);
 
 export const navigate = path => {
@@ -23,9 +23,12 @@ export const navigate = path => {
 };
 
 const initRouter = () => {
+  debugger;
   router
     .on({
       '/': query => {
+        debugger;
+
         RenderComponent(initHomePage, query).then(() => {
           addHomePageEventHandlers();
         });
