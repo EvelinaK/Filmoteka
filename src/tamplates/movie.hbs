@@ -39,6 +39,7 @@
                 </p>
             </div>
             <div class="details-film__btn">
+<<<<<<< HEAD
                 <div class="details-film__btn-watched">
                     <button id="action__watched" class="btn-watched" data-name='{{id}}' data-lsKeys='watchedKey'> add to
                         Watched</button>
@@ -49,6 +50,17 @@
                 </div>
                 <div class="details-film__btn-trailer">
                     <button class="btn-trailer" data-name='{{id}}'>movie trailer</button>
+=======
+                <div class="details-btn">
+                    <input class="btn-watched" id='btn-watched' type="checkbox" data-id='{{id}}' data-lable="watch" />
+                    <label aria-hidden="true" class="btn-watched__label" for="btn-watched"></label>
+                    {{!-- <button class="btn-watched" data-id='{{id}}' data-lable="watch"> add to Watched</button> --}}
+                </div>
+                <div class="details-btn">
+                    <input class="btn-queue" id='btn-queue' type="checkbox" data-id='{{id}}' data-lable="queue" />
+                    <label aria-hidden="true" class="btn-queue__label" for="btn-queue"></label>
+                    {{!-- <button class="btn-queue" data-id='{{id}}' data-lable="queue">add to queue</button> --}}
+>>>>>>> b62ea9670d88ed5894c07be5ea42bad4d136c8a9
                 </div>
             </div>
         </div>

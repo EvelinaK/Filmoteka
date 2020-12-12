@@ -6,7 +6,8 @@ import initHomePage, {
 } from '../pages/HomePage';
 import initLibraryWatched from '../pages/LibraryWatched';
 import initMoviePage, {
-  addEventHandlers as addMoviePageEventHandlers,
+  addEventOnClickMovieBtn as addMoviePageEventHandlers,
+  getMovie as getMovie,
 } from '../pages/MoviePage';
 import initLibraryQueue from '../pages/LibraryQueue';
 import initSearch, {
@@ -48,7 +49,9 @@ const initRouter = () => {
         RenderComponent(initLibraryWatched);
       },
       '/movie/:id': params => {
-        RenderComponent(initMoviePage, params).then(addMoviePageEventHandlers);
+        RenderComponent(initMoviePage, params).then(() => {
+          addMoviePageEventHandlers(), getMovie(params);
+        });
       },
     })
     .notFound(function (query) {
