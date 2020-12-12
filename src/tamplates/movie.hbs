@@ -38,11 +38,15 @@
                 </p>
             </div>
             <div class="details-film__btn">
-                <div class="details-film__btn-watched">
-                    <button class="btn-watched" data-name='{{id}}'> add to Watched</button>
+                <div class="details-btn">
+                    <input class="btn-watched" id='btn-watched' type="checkbox" data-id='{{id}}' data-lable="watch" />
+                    <label aria-hidden="true" class="btn-watched__label" for="btn-watched"></label>
+                    {{!-- <button class="btn-watched" data-id='{{id}}' data-lable="watch"> add to Watched</button> --}}
                 </div>
-                <div class="details-film__btn-queue">
-                    <button class="btn-queue" data-name='{{id}}'>add to queue</button>
+                <div class="details-btn">
+                    <input class="btn-queue" id='btn-queue' type="checkbox" data-id='{{id}}' data-lable="queue" />
+                    <label aria-hidden="true" class="btn-queue__label" for="btn-queue"></label>
+                    {{!-- <button class="btn-queue" data-id='{{id}}' data-lable="queue">add to queue</button> --}}
                 </div>
             </div>
         </div>
