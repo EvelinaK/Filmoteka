@@ -6,21 +6,25 @@ import SectionPagination from '../tamplates/pagination.hbs';
 import Footer from '../tamplates/footer.hbs';
 import { renderPagination } from '../components/pagination';
 
-const init = async (query, params = 'q=&page=1') => {
+const init = async (params, query) => {
+  // = 'q=&page=1'
   const API = new MovieAPI();
-  const queryParams = new URLSearchParams(params);
-
+  //const queryParams = new URLSearchParams(params);
+  const queryParams = new URLSearchParams(query);
   const data = await API.getMoviesByQuery(
     queryParams.get('q'),
     queryParams.get('page'),
   );
+
   console.log(params);
+
   const root = document.createElement('div');
 
   root.insertAdjacentHTML(
     'beforeend',
     Header({ banner: 'home', btn: 'off', form: 'on' }),
   );
+
   root.insertAdjacentHTML('beforeend', SectionCards(data.results));
   root.insertAdjacentHTML(
     'beforeend',
@@ -46,9 +50,25 @@ export const addEventHandlers = () => {
     .addEventListener('submit', submitHendler);
 };
 
+/*
+export const addEventHandlers = () => {
+  const mediaQuery = window.matchMedia(MEDIA_MediumQuery);
+  mediaQuery.addListener(event => {
+    paginationRef = document.querySelector('.pagination');
+    pageRef = paginationRef.querySelector('.item__border-active');
+    if (pageRef) {
+      paginationRef.querySelector('numpage__lists').innerHTML = paginationInit({
+        page: pageRef.textContent,
+        total_pages: pageRef.dataset.totalPages,
+      });
+    }
+  });
+};
+*/
+
 const submitHendler = async event => {
   event.preventDefault();
   const query = event.target.querySelector('input[name="text"]').value;
-
+  debugger;
   navigate(`/search?q=${query}`);
 };

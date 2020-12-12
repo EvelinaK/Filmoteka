@@ -103,236 +103,89 @@
     width: 40px;
   }
 }
+//--spinner
+.sk-chase {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation: sk-chase 2.5s infinite linear both;
+}
 
-// $border-color: #3d315b;
-// $list-background-color: white;
-// $active-list-background-color: #ff6b08;
-// $border-radius: 5px;
+.sk-chase-dot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: sk-chase-dot 2s infinite ease-in-out both;
+}
 
-// * {
-//   font-family: 'Poppins';
-// }
-// body {
-//   background-color: white;
-//   margin: 0;
-// }
-// .click-pag:hover {
-//   cursor: pointer;
-// }
-// #film-pagination {
-//   display: flex;
-//   height: auto;
-//   padding-top: 46px;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-// }
-// .film-page-list {
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-//   display: flex;
-//   width: 374px;
-//   height: 40px;
-//   line-height: 25px;
-//   .film-page-item {
-//     color: #fff;
-//     display: flex;
-//     a {
-//       background-color: #444b6e;
-//       padding: 5px 10px;
-//       border: 2px solid $border-color;
-//       border-right: 0;
-//     }
-//   }
+.sk-chase-dot:before {
+  content: '';
+  display: block;
+  width: 25%;
+  height: 25%;
+  background-color: #fff;
+  border-radius: 100%;
+  animation: sk-chase-dot-before 2s infinite ease-in-out both;
+}
 
-//   @media only screen and (min-width: 250px) and (max-width: 767px) {
-//     .film-page-list {
-//       display: flex;
-//       justify-content: center;
-//       width: 280px;
-//       height: 40px;
-//     }
-//     .out-of-range {
-//       display: none;
-//     }
-//   }
-//   // li.previous,
-//   // li.next {
-//   //   animation: fadein .5s;
-//   // }
-//   .film-page-item.active a {
-//     background-color: $active-list-background-color;
-//   }
-//   .film-page-item:first-child a {
-//     // border-radius: $border-radius 0 0 $border-radius;
-//     border-radius: 5px 0 0 5px;
-//   }
-//   .film-page-item:last-child a {
-//     // border-radius: 0 $border-radius $border-radius 0;
-//     border-radius: 5px 0 0 5px;
-//     border-right: 2px solid $border-color;
-//   }
-// }
+.sk-chase-dot:nth-child(1) {
+  animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2) {
+  animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3) {
+  animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4) {
+  animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5) {
+  animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6) {
+  animation-delay: -0.6s;
+}
+.sk-chase-dot:nth-child(1):before {
+  animation-delay: -1.1s;
+}
+.sk-chase-dot:nth-child(2):before {
+  animation-delay: -1s;
+}
+.sk-chase-dot:nth-child(3):before {
+  animation-delay: -0.9s;
+}
+.sk-chase-dot:nth-child(4):before {
+  animation-delay: -0.8s;
+}
+.sk-chase-dot:nth-child(5):before {
+  animation-delay: -0.7s;
+}
+.sk-chase-dot:nth-child(6):before {
+  animation-delay: -0.6s;
+}
 
-// When I feel motivated to get this working
-// @keyframes fadein {
-//   from {
-//     opacity: 0;
-//   }
-//   to {
-//     opacity: 1;
-//   }
-// }
-// .film-pagination {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   margin-bottom: 60px;
-//   height: auto;
-//   padding-top: 46px;
-//   justify-content: center;
+@keyframes sk-chase {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-//   .list {
-//     width: 100%;
-//     max-width: 768px;
-//     background-color: #fff;
-//     margin-top: 25px;
-//   }
+@keyframes sk-chase-dot {
+  80%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
-//   .list .item {
-//     padding: 15px;
-//   }
-
-//   .list .item:hover {
-//     background-color: rgb(0, 0, 0, 0.05);
-//   }
-// }
-
-// .pagenumbers {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: center;
-
-//   button {
-//     width: 40px;
-//     height: 40px;
-
-//     appearance: none;
-//     border: none;
-//     outline: none;
-//     cursor: pointer;
-//     margin: 5px;
-
-//     transition: 0.5s;
-//     color: #000000;
-
-//     font-family: 'Roboto', sans-serif;
-//     font-weight: 500;
-//     font-size: 12px;
-//     line-height: 1.33;
-//     font-style: normal;
-//     background-color: #fff;
-//   }
-
-//   button:hover {
-//     background-color: #ff6b08;
-//     color: #ffffff;
-//     border-radius: 5px;
-//   }
-
-//   button.active {
-//     background-color: #ff6b08;
-//     color: #ffffff;
-//     border-radius: 5px;
-//   }
-// }
-
-// @media screen and (max-width: 400px) {
-//   .pagenumbers button {
-//     width: 38px;
-//     height: 38px;
-//     margin: 3px;
-//   }
-// }
-
-// @media screen and (max-width: 320px) {
-//   .pagenumbers button {
-//     width: 35px;
-//     height: 35px;
-//     margin: 1px;
-//   }
-// }
-
-// .arrow_left {
-//   background-image: url('../../src/images/pagination/arrow-left.svg');
-//   background-repeat: no-repeat;
-// }
-
-// .arrow_right {
-//   background-image: url('../../src/images/pagination/arrow-right.svg');
-//   background-repeat: no-repeat;
-// }
-
-// .pagination__container_pages {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: center;
-// }
-
-// .pag-arrow {
-//   width: 40px;
-//   height: 40px;
-//   margin: 5px;
-//   background-position: center;
-//   border: none;
-//   background-color: #fff;
-//   transition: background-color 0.25s ease-in;
-//   border-radius: 5px;
-
-//   &:hover {
-//     background-color: #ff6b08;
-//     color: #ffffff;
-//     border-radius: 5px;
-//   }
-
-//   &:active {
-//     background-color: green;
-//   }
-// }
-
-// .threeDots {
-//   display: flex;
-//   width: 40px;
-//   height: 40px;
-//   margin: 5px;
-
-//   border: none;
-//   background-color: #fff;
-//   display: inline-block;
-//   text-align: center;
-//   padding: 10px 5px 1px 5px;
-// }
-
-// @media screen and (max-width: 767px) {
-//   .threeDots {
-//     display: none;
-//   }
-// }
-
-// @media screen and (min-width: 768px) {
-//   .threeDots {
-//     display: inline-block;
-//   }
-// }
-
-// .hide {
-//   display: none;
-// }
-
-// .disabled-arrow {
-//   pointer-events: none;
-//   background-color: #c4c0c0;
-// }
+@keyframes sk-chase-dot-before {
+  50% {
+    transform: scale(0.4);
+  }
+  100%,
+  0% {
+    transform: scale(1);
+  }
+}

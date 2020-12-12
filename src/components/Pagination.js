@@ -1,5 +1,4 @@
-import placeholder from './spinner';
-
+import spinner from './spinner';
 const templateButton = (page, baseLink, query) => `
   <li class="film-pag no page-item">
     <a class="click-pag" href="${baseLink}?page=${page}${query}">${page}</a>
@@ -37,25 +36,25 @@ const templateNext = (page, baseLink, query) => `
   </a>
 </li> 
 `;
-// let totalPages;
-// let baseLinks = '/';
 
-//  totalPages = totalPgs;
-// const TOTAL_PAGES = 'totalPages';
-// export const startRender = (
-//   currentPage = 1,
-//   totalPgs,
-//   baseLink = '/',
-//   query = '',
-// ) => {
-//   console.log(baseLink);
-//   //   localStorage.removeItem(TOTAL_PAGES);
-//   //   localStorage.setItem(TOTAL_PAGES, totalPgs);
+const findMobile = () => {
+  return window.matchMedia(`(max-width: ${767}px)`).matches;
+};
 
-//   totalPages = totalPgs;
-//   baseLinks = baseLink;
-//   return renderPagination(currentPage, totalPages, baseLink, query);
-// };
+let isMobile = findMobile();
+let CURRENT_PAGE;
+let TOTAL_PAGES;
+let BASE_LINK;
+let QUERY;
+
+const calcMobile = () => {
+  let isNewPageMobile = findMobile();
+  if (isMobile != isNewPageMobile) {
+    renderPagination(CURRENT_PAGE, TOTAL_PAGES, BASE_LINK, QUERY);
+    isMobile = isNewPageMobile;
+  }
+};
+// window.addEventListener('resize', calcMobile);
 
 export const renderPagination = (
   currentPage,
@@ -63,25 +62,21 @@ export const renderPagination = (
   baseLink = '/',
   query = '',
 ) => {
+  CURRENT_PAGE = currentPage;
+  TOTAL_PAGES = totalPages;
+  BASE_LINK = baseLink;
+  QUERY = query;
   const links = [];
-  /////////////
-  // baseLink = '/#';
-  ////////
-  const isMobile = () => {
-    // return setTimeout(window.screen.width <= 320, 300);
-    return document.body.clientWidth <= 320;
-  };
-  //   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
-
+  spinner.spinner.show();
   let pagData = registerData(currentPage);
   console.log(JSON.stringify(pagData));
-  //--функция которая сздает кнопку generatefirspageputton
+
   links.push(renderPrevBtn(currentPage, baseLink, query));
 
-  if (!isMobile()) {
+  if (!isMobile) {
     links.push(GenerateFirstBtn(pagData, baseLink, query));
   }
-  debugger;
+
   for (let i = 0; i < pagData.length; i++) {
     if (pagData[i] == currentPage) {
       links.push(templateactive(pagData[i], baseLink, query));
@@ -89,13 +84,13 @@ export const renderPagination = (
       links.push(templateButton(pagData[i], baseLink, query));
     }
   }
-  debugger;
-  if (!isMobile()) {
+
+  if (!isMobile) {
     links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
   }
   //--функция которая сздает кнопку generatefirspageputton
   links.push(renderNextBtn(currentPage, totalPages, baseLink, query));
-
+  spinner.spinner.close();
   return links.join('');
 };
 
@@ -134,6 +129,7 @@ function GenerateFirstBtn(pagData, baseLink, query) {
 
   return str;
 }
+
 function GenerateLastBtn(pagData, totalPages, baseLink, query) {
   var totalPages;
   let str;
@@ -180,16 +176,15 @@ function createRegisterArray(startIndex, maxLength, totalPages) {
 
 function registerData(activePageID) {
   let pagData = [];
+
+  const pagesShow = isMobile ? 3 : 5;
+
   if (activePageID < 4) {
-    pagData = createRegisterArray(0, 5);
+    pagData = createRegisterArray(0, pagesShow);
   } else {
     let startIndex = activePageID - 3;
-    pagData = createRegisterArray(startIndex, 5);
+    pagData = createRegisterArray(startIndex, pagesShow);
   }
 
   return pagData;
 }
-
-// если в массиве нет 1 , то рисую кнопку и добавлчяю
-// в основной массив если не единицы , а есть двойка , то троеточие не рисую
-// если нет ни единицы ни двойки троеточие рисую

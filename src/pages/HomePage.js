@@ -8,13 +8,14 @@ import { renderPagination } from '../components/pagination';
 import localStorage from '../services/LocalStorage';
 import placeholder from '../components/spinner';
 
-const init = async (query = 'page=1') => {
+const init = async (query = 'page=1', params) => {
   if (query === '') {
     query = 'page=1';
   }
-  debugger;
+
   const APi = new MovieAPI();
   const queryParams = new URLSearchParams(query);
+
   const data = await APi.getPopularMovies(queryParams.get('page'));
   const ganres = await APi.getGenres();
   const ganreById = ganres.reduce((acc, item) => {
@@ -38,7 +39,7 @@ const init = async (query = 'page=1') => {
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
-      paginations: renderPagination(data.page, data.total_pages, '/'),
+      paginations: renderPagination(data.page, data.total_pages, '/home'),
     }),
   );
   root.insertAdjacentHTML('beforeend', Footer());
@@ -64,11 +65,3 @@ const submitHendler = async event => {
 
   navigate(`/search?q=${query}`);
 };
-
-// const ClickHendler = async event => {
-//   event.preventDefault();
-//   const clickNav = event.target.querySelector('click-pag');
-//   placeholder.spinner.show();
-//   // window.scrollTo({ top: 0, behavior: 'smooth' });
-//   // navigate(`/search?q=${query}`);
-// };
