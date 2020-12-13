@@ -5,8 +5,6 @@ import SectionCards from '../tamplates/card.hbs';
 import SectionPagination from '../tamplates/pagination.hbs';
 import Footer from '../tamplates/footer.hbs';
 import { renderPagination } from '../components/pagination';
-import localStorage from '../services/LocalStorage';
-import placeholder from '../components/spinner';
 
 const init = async (query = 'page=1', params) => {
   if (query === '') {

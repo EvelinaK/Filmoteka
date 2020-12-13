@@ -38,7 +38,7 @@ const templateNext = (page, baseLink, query) => `
 `;
 
 const findMobile = () => {
-  return window.matchMedia(`(max-width: ${767}px)`).matches;
+  return window.matchMedia(`(max-width: ${425}px)`).matches;
 };
 
 let isMobile = findMobile();
