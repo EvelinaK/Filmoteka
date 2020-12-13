@@ -6,7 +6,7 @@ import initHomePage, {
 } from '../pages/HomePage';
 import initLibraryWatched from '../pages/LibraryWatched';
 import initMoviePage, {
-  addEventOnClickMovieBtn as addMoviePageEventHandlers,
+  addEventHandlers as addMoviePageEventHandlers,
   getMovie as getMovie,
 } from '../pages/MoviePage';
 import initLibraryQueue from '../pages/LibraryQueue';

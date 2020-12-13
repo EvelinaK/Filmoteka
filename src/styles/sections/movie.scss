@@ -5,7 +5,7 @@
 
   &__img {
     margin-right: 30px;
-
+    position: relative;
     & img {
       height: 100%;
       width: 100%;
@@ -208,19 +208,18 @@
 .btn-queue:checked + .btn-queue__label::before {
   content: 'del from queue';
 }
+.details-film__btn-trailer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .btn-trailer {
-  width: 136px;
-  height: 44px;
-  border: 1px solid #000000;
+  width: 50px;
+  height: 48px;
+  border: 3px solid #ff6b01;
   box-sizing: border-box;
-  border-radius: 5px;
-  text-transform: uppercase;
-  color: #000000;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+  border-radius: 50%;
 }
 @media only screen and (min-width: 250px) and (max-width: 768px) {
   .container {
