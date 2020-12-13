@@ -1,0 +1,20 @@
+@import '../sections/header.scss';
+@import '../sections/cards.scss';
+@import '../sections/paginations.scss';
+@import '../sections/footer.scss';
+
+.card-film__rating {
+  display: none !important;
+}
+#particle {
+  background-color: #c0987d;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+#overlay {
+  position: relative;
+}

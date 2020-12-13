@@ -1,0 +1,282 @@
+.page-header {
+  width: 1024px;
+  height: 230px;
+  margin: 0 auto;
+}
+
+.banner-effect {
+  position: absolute;
+  width: 1024px;
+  height: 230px;
+  background-color: rgba(0, 0, 0, 0.56);
+}
+
+.header-content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 99;
+}
+
+.banner-home {
+  background-image: url(../images/banner-home.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-watched {
+  background-image: url(../images/banner-watched.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-detalis {
+  background-image: url(../images/banner-detalis.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.site-logo {
+  height: 35px;
+  margin-top: 40px;
+  z-index: 99;
+
+  & svg {
+    margin-right: 12px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: #ffffff;
+  }
+}
+
+.menu-navigation {
+  width: 143px;
+  height: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 58px;
+  z-index: 99;
+
+  &__item {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      top: 14px;
+      left: 0;
+      margin-top: 2px;
+    }
+
+    &:hover::after {
+      background-color: #ff6b08;
+    }
+  }
+
+  &__home,
+  &__library {
+    font-family: Roboto;
+    font-style: normal;
+    color: #ffffff;
+    font-size: 12px;
+  }
+}
+
+.menu-library {
+  width: 287px;
+  height: 44px;
+  margin-top: 121px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+
+  &__watched,
+  &__queue {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    width: 136px;
+    color: white;
+    border: 1px solid #ffffff;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ff6b01;
+      border: #ff6b01;
+    }
+  }
+}
+
+.active {
+  background-color: #ff6b01;
+}
+
+.menu-search {
+  position: relative;
+  width: 336px;
+  margin-top: 113px;
+  z-index: 99;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+  }
+
+  &__films {
+    font-family: Roboto;
+    font-weight: normal;
+    width: 320px;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #ffffff;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.search-btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-search__res-warning {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  top: 22%;
+  left: 42%;
+  width: 22%;
+}
+
+.w {
+  display: none;
+}
+.warning {
+  opacity: 0.8;
+  color: red;
+  text-align: center;
+  display: block;
+}
+
+// для смены кнопок на страницах. не удалять
+.on {
+  display: flex;
+}
+
+.off {
+  display: none;
+}
+// для смены кнопок на страницах. не удалять
+
+@media only screen and (min-width: 250px) and (max-width: 768px) {
+  #wrapper {
+    width: 768px;
+  }
+  .container {
+    width: 616px;
+  }
+
+  .page-header {
+    width: 768px;
+  }
+
+  .banner-effect {
+    width: 768px;
+  }
+
+  .menu-search__films {
+    width: 296px;
+  }
+
+  .banner-home {
+    background-image: url(../images/banner-home768.png);
+  }
+
+  .banner-watched {
+    background-image: url(../images/banner-watched768.png);
+  }
+
+  .banner-detalis {
+    background-image: url(../images/banner-watched768.png);
+  }
+}
+
+@media only screen and (min-width: 250px) and (max-width: 320px) {
+  #wrapper {
+    width: 320px;
+  }
+
+  .page-header {
+    width: 100%;
+  }
+
+  .container {
+    width: 280px;
+  }
+
+  .header-content {
+    width: 280px;
+    position: relative;
+  }
+
+  .site-logo__link span {
+    display: none;
+  }
+
+  .banner-effect {
+    width: 320px;
+  }
+
+  .menu-search {
+    position: absolute;
+    width: 100%;
+  }
+  .menu-search__films {
+    width: 100%;
+    margin-right: 110px;
+  }
+
+  .search-form {
+    display: flex;
+  }
+
+  .banner-home {
+    background-image: url(../images/banner-home320.png);
+  }
+
+  .banner-watched {
+    background-image: url(../images/banner-watched320.png);
+  }
+
+  .banner-detalis {
+    background-image: url(../images/banner-detalis320.png);
+  }
+}
