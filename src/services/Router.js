@@ -8,7 +8,10 @@ import initMoviePage, {
   addEventHandlers as addMoviePageEventHandlers,
   getMovie as getMovie,
 } from '../pages/MoviePage';
-import initLibraryQueue from '../pages/LibraryQueue';
+import initLibraryQueue, {
+  addEventHandlers as addLibraryPageEventHandlers,
+  // onClickBtn as onClickBtnLibrary,
+} from '../pages/LibraryQueue';
 
 import initSearch, {
   addEventHandlers as searchPageEventHandlers,
@@ -43,7 +46,9 @@ const initRouter = () => {
         navigate('/library/queue');
       },
       '/library/queue': () => {
-        RenderComponent(initLibraryQueue);
+        RenderComponent(initLibraryQueue).then(() => {
+          addLibraryPageEventHandlers();
+        });
       },
       '/movie/:id': params => {
         RenderComponent(initMoviePage, params).then(() => {
