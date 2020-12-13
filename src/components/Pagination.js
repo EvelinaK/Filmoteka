@@ -68,28 +68,29 @@ export const renderPagination = (
   QUERY = query;
   const links = [];
   spinner.spinner.show();
-  let pagData = registerData(currentPage);
-  console.log(JSON.stringify(pagData));
+  let pagData = registerData(currentPage, totalPages);
 
-  links.push(renderPrevBtn(currentPage, baseLink, query));
+  if (pagData.length > 0) {
+    links.push(renderPrevBtn(currentPage, baseLink, query));
 
-  if (!isMobile) {
-    links.push(GenerateFirstBtn(pagData, baseLink, query));
-  }
-
-  for (let i = 0; i < pagData.length; i++) {
-    if (pagData[i] == currentPage) {
-      links.push(templateactive(pagData[i], baseLink, query));
-    } else if (pagData[i] <= totalPages) {
-      links.push(templateButton(pagData[i], baseLink, query));
+    if (!isMobile) {
+      links.push(GenerateFirstBtn(pagData, baseLink, query));
     }
-  }
 
-  if (!isMobile) {
-    links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
+    for (let i = 0; i < pagData.length; i++) {
+      if (pagData[i] == currentPage) {
+        links.push(templateactive(pagData[i], baseLink, query));
+      } else if (pagData[i] <= totalPages) {
+        links.push(templateButton(pagData[i], baseLink, query));
+      }
+    }
+
+    if (!isMobile) {
+      links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
+    }
+    //--функция которая сздает кнопку generatefirspageputton
+    links.push(renderNextBtn(currentPage, totalPages, baseLink, query));
   }
-  //--функция которая сздает кнопку generatefirspageputton
-  links.push(renderNextBtn(currentPage, totalPages, baseLink, query));
   spinner.spinner.close();
   return links.join('');
 };
@@ -145,12 +146,9 @@ function GenerateLastBtn(pagData, totalPages, baseLink, query) {
   return str;
 }
 
-function createRegisterArray(startIndex, maxLength, totalPages) {
+function createRegisterArray(startIndex, maxLength, totalPages = 0) {
   let registerArray = [];
   let lastIndex = startIndex + maxLength;
-
-  var totalPages;
-
   let firstRegNr = startIndex + 1;
   let lastRegNr = firstRegNr + maxLength;
 
@@ -174,16 +172,16 @@ function createRegisterArray(startIndex, maxLength, totalPages) {
   return registerArray;
 }
 
-function registerData(activePageID) {
+function registerData(activePageID, totalPages) {
   let pagData = [];
 
   const pagesShow = isMobile ? 3 : 5;
 
   if (activePageID < 4) {
-    pagData = createRegisterArray(0, pagesShow);
+    pagData = createRegisterArray(0, pagesShow, totalPages);
   } else {
     let startIndex = activePageID - 3;
-    pagData = createRegisterArray(startIndex, pagesShow);
+    pagData = createRegisterArray(startIndex, pagesShow, totalPages);
   }
 
   return pagData;

@@ -142,8 +142,7 @@
     width: 320px;
     font-size: 14px;
     line-height: 16px;
-    // display: flex;
-    // align-items: center;
+
     color: #ffffff;
     border: none;
     outline: none;
@@ -161,6 +160,25 @@
   outline: none;
   background: transparent;
   cursor: pointer;
+}
+
+.menu-search__res-warning {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  top: 19%;
+  left: 42%;
+  width: 22%;
+}
+
+.w {
+  display: none;
+}
+.warning {
+  opacity: 0.8;
+  color: red;
+  text-align: center;
+  display: block;
 }
 
 // для смены кнопок на страницах. не удалять
