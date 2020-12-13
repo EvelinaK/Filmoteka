@@ -1,9 +1,8 @@
 <section class="container">
     <div class="cards-films__wrap">
         {{#each this}}
-        <a href="/movie/{{id}}" class="card-item__film">
-            <img class="card__img" src="https://image.tmdb.org/t/p/w220_and_h330_face//{{poster_path}}" width="274"
-                height="398" />
+        <a class="card-item__film" href="/movie/{{id}}">
+            <img class="card__img" src="https://image.tmdb.org/t/p/w500//{{poster_path}}" width="274" height="398" />
             <h4 class="card-film__name">{{original_title}}</h4>
             <div class="card-film__details">
                 <p class="card-film__info">{{genre}} | {{release_date}}</p>

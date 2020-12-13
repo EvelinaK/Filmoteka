@@ -4,20 +4,23 @@ import Header from '../tamplates/header.hbs';
 import SectionCards from '../tamplates/card.hbs';
 import SectionPagination from '../tamplates/pagination.hbs';
 import Footer from '../tamplates/footer.hbs';
-import { startRender } from '../components/pagination';
+import { renderPagination } from '../components/pagination';
+import localStorage from '../services/LocalStorage';
+import placeholder from '../components/spinner';
 
-const init = async (query = 'page=1') => {
-  // const init = async (query, page) => {
-  // const API = new MovieAPI();
+const init = async (query = 'page=1', params) => {
+  if (query === '') {
+    query = 'page=1';
+  }
+
   const APi = new MovieAPI();
   const queryParams = new URLSearchParams(query);
+
   const data = await APi.getPopularMovies(queryParams.get('page'));
   const ganres = await APi.getGenres();
-  console.log(ganres);
   const ganreById = ganres.reduce((acc, item) => {
     return { ...acc, [item.id]: item.name };
   }, {});
-  console.log(ganreById);
   const films = data.results.map(item => {
     return {
       ...item,
@@ -25,14 +28,7 @@ const init = async (query = 'page=1') => {
       genre: item.genre_ids.map(item => ganreById[item]),
     };
   });
-  // ---новая работа с апи
-  // const Params = new URLSearchParams(query);
-  // const dat = await API.insertGenresToMovieObj(Params.get('page'));
-  // console.log(dat);
 
-  // const queryParams = new URLSearchParams(query);
-  // const data = await API.getPopularMovies(queryParams.get('page'));
-  // console.log(data);
   const root = document.createElement('div');
 
   root.insertAdjacentHTML(
@@ -40,11 +36,10 @@ const init = async (query = 'page=1') => {
     Header({ banner: 'home', btn: 'off', form: 'on' }),
   );
   root.insertAdjacentHTML('beforeend', SectionCards(films));
-
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
-      paginations: startRender(data.page, data.total_pages, '/'),
+      paginations: renderPagination(data.page, data.total_pages, '/home'),
     }),
   );
   root.insertAdjacentHTML('beforeend', Footer());
@@ -56,7 +51,6 @@ const init = async (query = 'page=1') => {
 
 export default init;
 
-//{{#each genres}}{{name}}{{#if @last}}{{else}}, {{/if}}{{/each}} |
 export const addEventHandlers = () => {
   document
     .querySelector('#search-form')

@@ -5,10 +5,10 @@
 
   &__img {
     margin-right: 30px;
-
+    position: relative;
     & img {
-      height: 514px;
-      width: 426px;
+      height: 100%;
+      width: 100%;
     }
   }
 
@@ -33,9 +33,6 @@
   &__stat-name {
     width: 80px;
     margin-right: 85px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 
     & p {
       height: 16px;
@@ -62,6 +59,10 @@
       font-weight: 500;
       font-size: 12px;
       color: #000000;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
     }
 
     &__vote {
@@ -74,10 +75,9 @@
   }
 
   &__info {
-    margin-right: 5px;
-
     &:not(:last-child)::after {
       content: ',';
+      margin-right: 5px;
     }
   }
 
@@ -91,8 +91,31 @@
     display: flex;
   }
 }
+.back-home {
+  display: block;
+  width: 55px;
+  height: 25px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: #000000;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  background-color: white;
 
-.ganre {
+  &:hover {
+    border: none;
+    background-color: #ff6b01;
+    color: #ffffff;
+  }
+}
+
+.back-home:hover .ganre {
   display: flex;
 }
 
@@ -104,6 +127,7 @@
   margin-right: 4px;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 
   & p {
     font-family: Roboto;
@@ -123,6 +147,7 @@
   border-radius: 5px;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 
   & p {
     line-height: 16px;
@@ -147,7 +172,6 @@
 
   &-text {
     width: 426px;
-    height: 141px;
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -157,23 +181,18 @@
   }
 }
 
-.btn-watched {
-  border: none;
-  width: 136px;
-  height: 44px;
-  background: #ff6b01;
-  border-radius: 5px;
-  text-transform: uppercase;
-  color: #fff;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+.btn-watched,
+.btn-queue {
+  appearance: none;
+}
+
+.details-btn:not(:last-child) {
   margin-right: 15px;
 }
 
-.btn-queue {
+.btn-watched__label,
+.btn-queue__label {
+  display: block;
   width: 136px;
   height: 44px;
   border: 1px solid #000000;
@@ -185,19 +204,67 @@
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 44px;
+  text-align: center;
+
+  &:hover {
+    border: none;
+    background-color: #ff6b01;
+    color: #ffffff;
+  }
 }
 
+.btn-watched__label::before {
+  content: 'add to watched';
+  display: block;
+}
+
+.btn-watched:checked + .btn-watched__label::before {
+  content: 'del from watched';
+}
+
+.btn-queue__label::before {
+  content: 'add to queue';
+  display: block;
+}
+
+.btn-queue:checked + .btn-queue__label::before {
+  content: 'del from queue';
+}
+.details-film__btn-trailer {
+  position: absolute;
+  bottom: 0;
+  right: 3px;
+}
+
+.btn-trailer {
+  width: 50px;
+  height: 48px;
+  border: 3px solid #ff6b01;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  &:hover,
+  :focus {
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      0px 1px 1px rgba(0, 0, 0, 0.12);
+    transform: scale(1.1);
+  }
+}
 @media only screen and (min-width: 250px) and (max-width: 768px) {
   .container {
     width: 616px;
-    background-color: burlywood;
   }
 
   .details-film {
     &__img {
       height: 416px;
       width: 294px;
+
+      & img {
+        height: 416px;
+        width: 294px;
+      }
     }
 
     &__text {
@@ -221,7 +288,6 @@
   .about {
     &-text {
       width: 294px;
-      height: 199px;
     }
   }
 }
@@ -235,15 +301,20 @@
   .details-film {
     display: flex;
     flex-direction: column;
+    margin: 20px 0 0 0;
 
     &__img {
-      height: 416px;
-      width: 280px;
+      height: 90%;
+      width: 90%;
       margin-bottom: 30px;
+
+      & img {
+        height: 416px;
+        width: 280px;
+      }
     }
 
     &__text {
-      height: 482px;
       width: 280px;
     }
 
@@ -251,6 +322,10 @@
       font-size: 20px;
       line-height: 23px;
       height: 21px;
+    }
+
+    &__stat-name {
+      width: 80px;
     }
 
     &__about {
@@ -265,7 +340,6 @@
   .about {
     &-text {
       width: 280px;
-      height: 217px;
     }
   }
 
@@ -276,4 +350,24 @@
   .btn-queue {
     width: 132px;
   }
+}
+
+.basicLightbox {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0.01;
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+  will-change: opacity;
+}
+
+.basicLightbox--visible {
+  opacity: 1;
 }

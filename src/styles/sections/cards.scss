@@ -15,7 +15,7 @@
 }
 .card-film__name,
 .card-film__info {
-  padding: 0px;
+  // padding: 0px;
   margin: 0;
 }
 .cards-films__wrap-pagination {
@@ -31,7 +31,14 @@
   font-size: 12px;
   line-height: 14px;
   margin-bottom: 30px;
+  border-radius: 5px;
   /* padding-top: 10px; */
+  // &:hover,
+  // :focus {
+  //   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+  //     0px 1px 1px rgba(0, 0, 0, 0.12);
+  //   transform: scale(1.1);
+  // }
   &:nth-child(3n) {
     margin-right: 0;
   }
@@ -41,10 +48,21 @@
 }
 
 .card__img {
+  &:hover,
+  :focus {
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      0px 1px 1px rgba(0, 0, 0, 0.12);
+    transform: scale(1.1);
+  }
+}
+
+.card__img {
   border-radius: 5px;
 }
 
 .card-film__name {
+  padding-top: 20px;
+  width: 85%;
   text-transform: uppercase;
 }
 .card-film__info {
@@ -55,22 +73,23 @@
   line-height: 14px;
   color: #ff6801;
 }
+
 .card-film__rating {
-  position: absolute;
-  margin-top: -14px;
-  padding-top: 1px;
+  display: block;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
   width: 36px;
   height: 16px;
-  background: #ff6801;
+  background: #ff6b01;
   border-radius: 5px;
-  text-align: center;
-  font-size: 12px;
-  color: #ffffff;
-  line-height: 14.06px;
-  display: inline-block;
-  transform: translate(130px, 0px);
+  color: #fff;
 }
-@media only screen and (min-width: 250px) and (max-width: 768px) {
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
   .cards-films__wrap {
     display: flex;
     flex-wrap: wrap;
@@ -88,10 +107,9 @@
     margin-top: 50px;
     margin-bottom: 50px;
   }
+
   .card-item__film {
-    /* margin-right: 30px; */
     padding: 0;
-    /* background-color: coral; */
     width: 47%;
     height: 429px;
   }
@@ -101,13 +119,6 @@
     height: 398px;
   }
 
-  /* .card__item-film:nth-child(1n) { */
-  /* margin-right: 30px; */
-  /* } */
-
-  /* .card__item-film:nth-last-child(-n + 1) {
-      margin-bottom: 0;
-    } */
   .card-list__name {
     font-family: Roboto;
     font-weight: 500;
@@ -120,7 +131,7 @@
   .card-film__name {
     text-transform: uppercase;
     margin: 0;
-    padding: 0;
+    // padding: 0;
   }
   .card-film__info {
     font-size: 10px;
@@ -137,7 +148,7 @@
     /* flex-wrap: wrap;
       align-items: center;
       margin: 0 auto; */
-    margin-top: 50px;
+    margin-top: 30px;
     /* margin-bottom: 100px; */
     width: 100%;
   }
@@ -145,7 +156,7 @@
   .card-item__film {
     height: 398px;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     background-color: cornflowerblue;
   }
 

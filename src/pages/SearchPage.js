@@ -4,17 +4,19 @@ import Header from '../tamplates/header.hbs';
 import SectionCards from '../tamplates/card.hbs';
 import SectionPagination from '../tamplates/pagination.hbs';
 import Footer from '../tamplates/footer.hbs';
-import { startRender } from '../components/pagination';
+import { renderPagination } from '../components/pagination';
 
-const init = async (query, params = 'q=&page=1') => {
+const init = async (params, query) => {
+  // = 'q=&page=1'
   const API = new MovieAPI();
-  const queryParams = new URLSearchParams(params);
-
+  //const queryParams = new URLSearchParams(params);
+  const queryParams = new URLSearchParams(query);
   const data = await API.getMoviesByQuery(
     queryParams.get('q'),
     queryParams.get('page'),
-    //-нужно получать и передавать
   );
+
+  console.log(params);
 
   const root = document.createElement('div');
 
@@ -22,12 +24,17 @@ const init = async (query, params = 'q=&page=1') => {
     'beforeend',
     Header({ banner: 'home', btn: 'off', form: 'on' }),
   );
-  root.insertAdjacentHTML('beforeend', SectionCards(data.results));
 
+  root.insertAdjacentHTML('beforeend', SectionCards(data.results));
   root.insertAdjacentHTML(
     'beforeend',
     SectionPagination({
-      paginations: startRender(data.page, data.total_pages, '/search'),
+      paginations: renderPagination(
+        data.page,
+        data.total_pages,
+        '/search',
+        `&q=${queryParams.get('q')}`,
+      ),
     }),
   );
   root.insertAdjacentHTML('beforeend', Footer());
@@ -35,20 +42,33 @@ const init = async (query, params = 'q=&page=1') => {
   return root.innerHTML;
 };
 
-// Other functions
-
 export default init;
 
-//{{#each genres}}{{name}}{{#if @last}}{{else}}, {{/if}}{{/each}} |
 export const addEventHandlers = () => {
   document
     .querySelector('#search-form')
     .addEventListener('submit', submitHendler);
 };
 
+/*
+export const addEventHandlers = () => {
+  const mediaQuery = window.matchMedia(MEDIA_MediumQuery);
+  mediaQuery.addListener(event => {
+    paginationRef = document.querySelector('.pagination');
+    pageRef = paginationRef.querySelector('.item__border-active');
+    if (pageRef) {
+      paginationRef.querySelector('numpage__lists').innerHTML = paginationInit({
+        page: pageRef.textContent,
+        total_pages: pageRef.dataset.totalPages,
+      });
+    }
+  });
+};
+*/
+
 const submitHendler = async event => {
   event.preventDefault();
   const query = event.target.querySelector('input[name="text"]').value;
-
+  debugger;
   navigate(`/search?q=${query}`);
 };

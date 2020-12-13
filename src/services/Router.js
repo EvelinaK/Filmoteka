@@ -1,23 +1,24 @@
 import Navigo from 'navigo';
 import RenderComponent from './Component';
+
 import initHomePage, {
   addEventHandlers as addHomePageEventHandlers,
-  submitHandler as submitHandler,
 } from '../pages/HomePage';
 import initLibraryWatched from '../pages/LibraryWatched';
-import initMoviePage from '../pages/MoviePage';
+import initMoviePage, {
+  addEventHandlers as addMoviePageEventHandlers,
+  getMovie as getMovie,
+} from '../pages/MoviePage';
 import initLibraryQueue from '../pages/LibraryQueue';
-import initSearch from '../pages/SearchPage';
+import initSearch, {
+  addEventHandlers as searchPageEventHandlers,
+} from '../pages/SearchPage';
 
 const root = null;
 const useHash = true;
 const hash = '#';
-//--или true ???
-const router = new Navigo(root, useHash);
 
-export const navigate = path => {
-  router.navigate(path);
-};
+const router = new Navigo(root, useHash);
 
 const initRouter = () => {
   router
@@ -27,8 +28,16 @@ const initRouter = () => {
           addHomePageEventHandlers();
         });
       },
-      '/search': (query, params) => {
-        RenderComponent(initSearch, query, params).then(() => {});
+      '/:action': (query, params) => {
+        if (query.action === 'home') {
+          RenderComponent(initHomePage, params).then(() => {
+            addHomePageEventHandlers();
+          });
+        } else if (query.action === 'search') {
+          RenderComponent(initSearch, query, params).then(() => {
+            searchPageEventHandlers();
+          });
+        }
       },
       '/library': query => {
         RenderComponent(initLibraryQueue, query);
@@ -40,67 +49,22 @@ const initRouter = () => {
         RenderComponent(initLibraryWatched);
       },
       '/movie/:id': params => {
-        RenderComponent(initMoviePage, params);
+        RenderComponent(initMoviePage, params).then(() => {
+          addMoviePageEventHandlers(), getMovie(params);
+        });
       },
     })
     .notFound(function (query) {
       console.log(query);
     })
     .resolve();
-  // .on('/', query => {
-  //   RenderComponent(initHomePage, query).then(() => {
-  //     addHomePageEventHandlers();
-  //   });
-  // })
-  // .on('/library', () => {
-  //   RenderComponent(initLibraryQueue);
-  // })
-  // .on('/search', query => {
-  //   RenderComponent(initSearch, query);
-  // })
-  // .on(`/library/queue`, () => {
-  //   RenderComponent(initLibraryQueue);
-  // })
-  // .on(`/library/watched`, () => {
-  //   RenderComponent(initLibraryWatched);
-  // })
-  // .on('/movie/:id', params => {
-  //   RenderComponent(initMoviePage, params);
-  // })
-  // .resolve();
 };
 
-// const initRouter = () => {
-//   router
-//     .on({
-//       '/': query => {
-//         RenderComponent(initHomePage, query).then(() => {
-//           addHomePageEventHandlers();
-//         });
-//       },
-//       '/:search': (params, query) => {
-//         RenderComponent(initSearchQwery, params, query).then(() => {
-//           addSearch();
-//         });
-//       },
-//       '/library': query => {
-//         RenderComponent(initLibraryQueue, query);
-//       },
-//       '/library/queue': () => {
-//         RenderComponent(initLibraryQueue);
-//       },
-//       '/library/watched': () => {
-//         RenderComponent(initLibraryWatched);
-//       },
-//       '/movie/:id': params => {
-//         RenderComponent(initMoviePage, params);
-//       },
-//     })
-//     .resolve();
-// };
-
-// export const navigate = path => {
-//   router.navigate(path);
-// };
-
 export default initRouter;
+
+export const navigate = path => {
+  router.navigate(path);
+};
+// /
+// /?page
+// /jhgd/qqqf?
