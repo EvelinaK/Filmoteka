@@ -17,6 +17,7 @@
 .card-film__info {
   padding: 0px;
   margin: 0;
+  width: 100%;
 }
 .cards-films__wrap-pagination {
   display: flex;
@@ -79,6 +80,16 @@
   background: #ff6b01;
   border-radius: 5px;
   color: #fff;
+}
+
+.card-item__film {
+  width: 33vh;
+}
+.card-item__film {
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }
 
 @media only screen and (min-width: 321px) and (max-width: 768px) {
@@ -156,8 +167,8 @@
     height: 398px;
     width: 100%;
     margin-bottom: 30px;
-    background-color: cornflowerblue;
-    width: 30vh;
+    // background-color: cornflowerblue;
+    // width: 30vh;
   }
 
   .card__img {
@@ -165,14 +176,15 @@
     height: 398px;
   }
 }
-@media (min-width: 768px) {
-  .card-item__film {
-    width: 33vh;
-  }
-  .card-item__film {
-    &:hover,
-    &:focus {
-      transform: scale(1.1);
-    }
-  }
-}
+
+// @media (min-width: 768px) {
+//   .card-item__film {
+//     width: 33vh;
+//   }
+//   .card-item__film {
+//     &:hover,
+//     &:focus {
+//       transform: scale(1.1);
+//     }
+//   }
+// }

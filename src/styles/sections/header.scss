@@ -171,7 +171,7 @@
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  top: 19%;
+  top: 22%;
   left: 42%;
   width: 22%;
 }
@@ -206,12 +206,10 @@
 
   .page-header {
     width: 768px;
-    // margin: 0 auto;
   }
 
   .banner-effect {
     width: 768px;
-    // margin: 0 auto;
   }
 
   .menu-search__films {
@@ -235,16 +233,18 @@
   #wrapper {
     width: 320px;
   }
-  .container {
-    width: 280px;
-  }
 
   .page-header {
+    width: 100%;
+  }
+
+  .container {
     width: 280px;
   }
 
   .header-content {
     width: 280px;
+    position: relative;
   }
 
   .site-logo__link span {
@@ -252,11 +252,20 @@
   }
 
   .banner-effect {
-    width: 280px;
+    width: 320px;
   }
 
+  .menu-search {
+    position: absolute;
+    width: 100%;
+  }
   .menu-search__films {
-    width: 296px;
+    width: 100%;
+    margin-right: 110px;
+  }
+
+  .search-form {
+    display: flex;
   }
 
   .banner-home {
