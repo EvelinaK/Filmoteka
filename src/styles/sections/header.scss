@@ -159,6 +159,20 @@
     height: 16px;
   }
 }
+
+.search-form {
+  position: relative;
+  &::after {
+    content: 'Search result not successful. Enter the correct movie name and';
+    position: absolute;
+    top: 40px;
+    left: -10%;
+    width: 130%;
+    height: 1px;
+    color: #ff001b;
+  }
+}
+
 .search-btn {
   border: none;
   outline: none;
