@@ -24,7 +24,7 @@
                             stroke-linejoin="round" />
                     </svg><span>Filmoteka</span> </a>
             </div>
-            <div class="menu-search {{form}}">
+            <div class="menu-search" id="menu-search" {{form}}">
                 <form class="search-form" id="search-form">
                     <input class="menu-search__films search-field" type="text" name="text" autocomplete="off"
                         placeholder="Поиск фильмов">
@@ -38,6 +38,9 @@
                         </svg>
                     </button>
                 </form>
+            </div>
+            <div class="menu-search__res-warning">
+                <p class="w">Search result not successful. Enter the correct movie name</p>
             </div>
             <div class="menu-library {{btn}}">
                 <button class="menu-library__watched">WATCHED</button>

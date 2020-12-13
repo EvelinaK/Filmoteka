@@ -53,13 +53,22 @@ export const addEventHandlers = () => {
   document
     .querySelector('#search-form')
     .addEventListener('submit', submitHendler);
-
-  // document.querySelector('click-pag').addEventListener('click', ClickHendler);
 };
 
 const submitHendler = async event => {
   event.preventDefault();
-  const query = event.target.querySelector('input[name="text"]').value;
 
-  navigate(`/search?q=${query}`);
+  const query = await event.target.querySelector('input[name="text"]').value;
+
+  if (!query || query.trim().length == 0) {
+    document.querySelector('.w').classList.add('warning');
+    document.querySelector('input[name="text"]').value = '';
+    function sayHi() {
+      document.querySelector('.w').classList.remove('warning');
+    }
+    setTimeout(sayHi, 4000);
+  } else {
+    document.querySelector('.w').classList.remove('warning');
+    navigate(`/search?q=${query}`);
+  }
 };
