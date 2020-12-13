@@ -1,11 +1,12 @@
 import Navigo from 'navigo';
 import RenderComponent from './Component';
+
 import initHomePage, {
   addEventHandlers as addHomePageEventHandlers,
 } from '../pages/HomePage';
 import initLibraryWatched from '../pages/LibraryWatched';
 import initMoviePage, {
-  addEventOnClickMovieBtn as addMoviePageEventHandlers,
+  addEventHandlers as addMoviePageEventHandlers,
   getMovie as getMovie,
 } from '../pages/MoviePage';
 import initLibraryQueue from '../pages/LibraryQueue';
@@ -14,14 +15,10 @@ import initSearch, {
 } from '../pages/SearchPage';
 
 const root = null;
-const useHash = false;
+const useHash = true;
 const hash = '#';
-//--или true ???
-const router = new Navigo(root, useHash);
 
-export const navigate = path => {
-  router.navigate(path);
-};
+const router = new Navigo(root, useHash);
 
 const initRouter = () => {
   router
@@ -31,10 +28,16 @@ const initRouter = () => {
           addHomePageEventHandlers();
         });
       },
-      '/search': (query, params) => {
-        RenderComponent(initSearch, query, params).then(
-          searchPageEventHandlers,
-        );
+      '/:action': (query, params) => {
+        if (query.action === 'home') {
+          RenderComponent(initHomePage, params).then(() => {
+            addHomePageEventHandlers();
+          });
+        } else if (query.action === 'search') {
+          RenderComponent(initSearch, query, params).then(() => {
+            searchPageEventHandlers();
+          });
+        }
       },
       '/library': query => {
         RenderComponent(initLibraryQueue, query);
@@ -58,3 +61,10 @@ const initRouter = () => {
 };
 
 export default initRouter;
+
+export const navigate = path => {
+  router.navigate(path);
+};
+// /
+// /?page
+// /jhgd/qqqf?

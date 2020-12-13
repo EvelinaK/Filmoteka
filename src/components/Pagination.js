@@ -1,29 +1,24 @@
-const template = (page, baseLink = '/', query) => `
+import spinner from './spinner';
+const templateButton = (page, baseLink, query) => `
   <li class="film-pag no page-item">
     <a class="click-pag" href="${baseLink}?page=${page}${query}">${page}</a>
   </li>
 `;
 
-const templateButton = (page, baseLink = '/', query) => `
-  <li class="film-pag no page-item">
-    <a class="click-pag" href="${baseLink}?page=${page}${query}">${page}</a>
-  </li>
-`;
-
-const templateDots = (page, baseLink = '/', query) => `
+const templateDots = (page, baseLink, query) => `
   <li class="film-pag no page-item">
     <a class="click-pag" href="${baseLink}?page=${page}${query}">...</a>
   </li>
 `;
 
-const templateactive = (page, baseLink = '/', query) => `
+const templateactive = (page, baseLink, query) => `
 <li class="film-pag no page-item active">
   <a class="click-pag" href="${baseLink}?page=${page}${query}">${page}</a>
 </li>
 `;
 
-const templatePrev = (page, baseLink = '/', query) => `
-<li class="film-page-item previous no">
+const templatePrev = (page, baseLink, query) => `
+<li class="film-pag page-item previous no">
   <a class="click-pag" href="${baseLink}?page=${page}${query}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M12.6667 8H3.33334" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00001 12.6667L3.33334 8.00004L8.00001 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -32,8 +27,8 @@ const templatePrev = (page, baseLink = '/', query) => `
 </li>
 `;
 
-const templateNext = (page, baseLink = '/', query) => `
-<li class="film-page-item next no">
+const templateNext = (page, baseLink, query) => `
+<li class="film-pag page-item next no">
   <a class="click-pag" href="${baseLink}?page=${page}${query}"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M3.33335 8H12.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M8.00002 12.6667L12.6667 8.00004L8.00002 3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
@@ -41,48 +36,61 @@ const templateNext = (page, baseLink = '/', query) => `
   </a>
 </li> 
 `;
-let totalPages;
-let baseLinks = '/';
 
-//  totalPages = totalPgs;
-// const TOTAL_PAGES = 'totalPages';
-export const startRender = (
-  currentPage = 1,
-  totalPgs,
+const findMobile = () => {
+  return window.matchMedia(`(max-width: ${767}px)`).matches;
+};
+
+let isMobile = findMobile();
+let CURRENT_PAGE;
+let TOTAL_PAGES;
+let BASE_LINK;
+let QUERY;
+
+const calcMobile = () => {
+  let isNewPageMobile = findMobile();
+  if (isMobile != isNewPageMobile) {
+    renderPagination(CURRENT_PAGE, TOTAL_PAGES, BASE_LINK, QUERY);
+    isMobile = isNewPageMobile;
+  }
+};
+// window.addEventListener('resize', calcMobile);
+
+export const renderPagination = (
+  currentPage,
+  totalPages,
   baseLink = '/',
   query = '',
 ) => {
-  console.log(baseLink);
-  //   localStorage.removeItem(TOTAL_PAGES);
-  //   localStorage.setItem(TOTAL_PAGES, totalPgs);
-
-  totalPages = totalPgs;
-  baseLinks = baseLink;
-  return renderPagination(currentPage, totalPages, baseLink, query);
-};
-
-export const renderPagination = (currentPage, totalPages, baseLink, query) => {
+  CURRENT_PAGE = currentPage;
+  TOTAL_PAGES = totalPages;
+  BASE_LINK = baseLink;
+  QUERY = query;
   const links = [];
-
-  //   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
-
+  spinner.spinner.show();
   let pagData = registerData(currentPage);
   console.log(JSON.stringify(pagData));
-  //--функция которая сздает кнопку generatefirspageputton
+
   links.push(renderPrevBtn(currentPage, baseLink, query));
-  links.push(GenerateFirstBtn(pagData, baseLink, query));
+
+  if (!isMobile) {
+    links.push(GenerateFirstBtn(pagData, baseLink, query));
+  }
+
   for (let i = 0; i < pagData.length; i++) {
     if (pagData[i] == currentPage) {
       links.push(templateactive(pagData[i], baseLink, query));
     } else if (pagData[i] <= totalPages) {
-      links.push(template(pagData[i], baseLink, query));
+      links.push(templateButton(pagData[i], baseLink, query));
     }
   }
-  links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
+
+  if (!isMobile) {
+    links.push(GenerateLastBtn(pagData, totalPages, baseLink, query));
+  }
   //--функция которая сздает кнопку generatefirspageputton
   links.push(renderNextBtn(currentPage, totalPages, baseLink, query));
-
-  // console.log(links.join(''));
+  spinner.spinner.close();
   return links.join('');
 };
 
@@ -121,6 +129,7 @@ function GenerateFirstBtn(pagData, baseLink, query) {
 
   return str;
 }
+
 function GenerateLastBtn(pagData, totalPages, baseLink, query) {
   var totalPages;
   let str;
@@ -140,9 +149,7 @@ function createRegisterArray(startIndex, maxLength, totalPages) {
   let registerArray = [];
   let lastIndex = startIndex + maxLength;
 
-  //   const totalPages = Number(localStorage.getItem(TOTAL_PAGES));
   var totalPages;
-  // console.log('startIndex: ' + startIndex + ', lastIndex: ' + lastIndex);
 
   let firstRegNr = startIndex + 1;
   let lastRegNr = firstRegNr + maxLength;
@@ -160,14 +167,6 @@ function createRegisterArray(startIndex, maxLength, totalPages) {
     }
   }
 
-  // console.log(
-  //   'firstRegNr: ' +
-  //     firstRegNr +
-  //     ', lastRegNr: ' +
-  //     lastRegNr +
-  //     ', diff: ' +
-  //     diff,
-  // );
   for (let i = firstRegNr; i < lastRegNr; i++) {
     registerArray.push(i); //store register number (starts with 1);
   }
@@ -177,16 +176,15 @@ function createRegisterArray(startIndex, maxLength, totalPages) {
 
 function registerData(activePageID) {
   let pagData = [];
+
+  const pagesShow = isMobile ? 3 : 5;
+
   if (activePageID < 4) {
-    pagData = createRegisterArray(0, 5);
+    pagData = createRegisterArray(0, pagesShow);
   } else {
-    let startIndex = activePageID - 4;
-    pagData = createRegisterArray(startIndex, 7);
+    let startIndex = activePageID - 3;
+    pagData = createRegisterArray(startIndex, pagesShow);
   }
 
   return pagData;
 }
-
-// если в массиве нет 1 , то рисую кнопку и добавлчяю
-// в основной массив если не единицы , а есть двойка , то троеточие не рисую
-// если нет ни единицы ни двойки троеточие рисую

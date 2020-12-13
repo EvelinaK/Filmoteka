@@ -27,6 +27,12 @@ export default class MovieAPI {
     ).then(res => res.json());
   }
 
+  getMovies(filmId) {
+    return fetch(
+      `${BASE_URL}/3/movie/${filmId}/videos?api_key=${API_KEY}&language=en-US`,
+    ).then(res => res.json());
+  }
+
   getMoviesByQuery(searchQuery, page = 1) {
     return fetch(
       `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&page=${page}&query=${searchQuery}`,
