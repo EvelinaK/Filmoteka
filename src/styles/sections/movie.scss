@@ -191,6 +191,31 @@
   }
 }
 
+.back-home {
+  display: block;
+  width: 55px;
+  height: 25px;
+  margin-bottom: 15px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: #000000;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  background-color: white;
+
+  &:hover {
+    border: none;
+    background-color: #ff6b01;
+    color: #ffffff;
+  }
+}
+
 .btn-watched__label::before {
   content: 'add to watched';
   display: block;
@@ -211,7 +236,7 @@
 .details-film__btn-trailer {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 3px;
 }
 
 .btn-trailer {
@@ -221,6 +246,13 @@
   box-sizing: border-box;
   border-radius: 50%;
   outline: none;
+
+  &:hover,
+  :focus {
+    box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.16), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      0px 1px 1px rgba(0, 0, 0, 0.12);
+    transform: scale(1.1);
+  }
 }
 @media only screen and (min-width: 250px) and (max-width: 768px) {
   .container {

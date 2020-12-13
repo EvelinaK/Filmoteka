@@ -59,7 +59,6 @@ const submitHendler = async event => {
   event.preventDefault();
 
   const query = await event.target.querySelector('input[name="text"]').value;
-
   if (!query || query.trim().length == 0) {
     document.querySelector('.w').classList.add('warning');
     document.querySelector('input[name="text"]').value = '';
