@@ -4,12 +4,12 @@ import RenderComponent from './Component';
 import initHomePage, {
   addEventHandlers as addHomePageEventHandlers,
 } from '../pages/HomePage';
-import initLibraryWatched from '../pages/LibraryWatched';
 import initMoviePage, {
   addEventHandlers as addMoviePageEventHandlers,
   getMovie as getMovie,
 } from '../pages/MoviePage';
 import initLibraryQueue from '../pages/LibraryQueue';
+
 import initSearch, {
   addEventHandlers as searchPageEventHandlers,
 } from '../pages/SearchPage';
@@ -39,14 +39,11 @@ const initRouter = () => {
           });
         }
       },
-      '/library': query => {
-        RenderComponent(initLibraryQueue, query);
+      '/library/library': (params, query) => {
+        navigate('/library/queue');
       },
       '/library/queue': () => {
         RenderComponent(initLibraryQueue);
-      },
-      '/library/watched': () => {
-        RenderComponent(initLibraryWatched);
       },
       '/movie/:id': params => {
         RenderComponent(initMoviePage, params).then(() => {
@@ -65,6 +62,3 @@ export default initRouter;
 export const navigate = path => {
   router.navigate(path);
 };
-// /
-// /?page
-// /jhgd/qqqf?

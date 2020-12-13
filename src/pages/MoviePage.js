@@ -9,7 +9,6 @@ let API = new MovieAPI();
 
 const init = async params => {
   const data = await API.getMoviesById(params.id);
-  const trailer = await API.getMovies(params.id);
 
   const root = document.createElement('div');
 
@@ -57,8 +56,6 @@ export const getMovie = params => {
 
   const LocalStorage = new LocalStorageApi();
 
-  // const watchStore = LocalStorage.get(watch.dataset.lable);
-
   if (LocalStorage.has(watch.dataset.lable)) {
     const watchStore = LocalStorage.get(watch.dataset.lable);
 
@@ -87,9 +84,16 @@ export const getMovie = params => {
 const openTrailer = async event => {
   event.preventDefault();
 
-  const trailler = await API.getMovies(event.target.getAttribute('data-name'));
-  console.log(trailler.results[0].key);
-  const instance = drawModalForTrailler(trailler.results[0].key);
-  instance.show();
+  const trailler = await API.getMovies(
+    event.currentTarget.getAttribute('data-name'),
+  );
+  console.log(trailler);
+
+  if (trailler.results.length === 0) {
+    return;
+  } else {
+    const instance = drawModalForTrailler(trailler.results[0].key);
+    instance.show();
+  }
 };
 export default init;
