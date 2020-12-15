@@ -1,7 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const paths = require('../utils/paths');
 
 module.exports = env => ({
   devtool: 'source-map',
@@ -23,11 +22,6 @@ module.exports = env => ({
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        include: paths.SRC_DIR,
-        use: ['babel-loader'],
-      },
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],

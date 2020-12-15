@@ -13,6 +13,11 @@ module.exports = env => ({
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: paths.SRC_DIR,
+        use: ['babel-loader'],
+      },
+      {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {
